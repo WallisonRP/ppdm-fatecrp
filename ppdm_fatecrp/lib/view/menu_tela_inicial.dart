@@ -16,7 +16,7 @@ class MenuTelaInicial extends StatefulWidget {
 }
 
 class _MenuTelaInicialState extends State<MenuTelaInicial> {
-  int _indiceAtual = 1;
+  int _indiceAtual = 2;
 
   @override
   Widget build(BuildContext context) {
