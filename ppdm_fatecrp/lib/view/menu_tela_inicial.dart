@@ -16,7 +16,7 @@ class MenuTelaInicial extends StatefulWidget {
 }
 
 class _MenuTelaInicialState extends State<MenuTelaInicial> {
-  int _indiceAtual = 0;
+  int _indiceAtual = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +33,7 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
       appBar: AppBar(
         backgroundColor: Color(0xffD9D9D9),
         title: Text(
+          // 'Página inicial',
           _titulos[_indiceAtual],
           style: TextStyle(color: Colors.black),
         ),
