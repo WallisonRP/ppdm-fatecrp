@@ -10,7 +10,21 @@ class TelaAlunos extends StatefulWidget {
 }
 
 class _TelaAlunosState extends State<TelaAlunos> {
-  List lista = ['Gabriel Oliveira', 'Rodrigo Plotze', 'Wallison Pereira'];
+  List lista = [
+    'Camila Silva',
+    'Ciro Abib',
+    'Fabio Chubinho',
+    'Gabriel Oliveira',
+    'Guilherme Crisóstopo',
+    'Guilherme Lima Beta',
+    'Gustavo Latrocínio',
+    'Gustavo Macrino',
+    'Juliano Henrico',
+    'Maria Duda',
+    'Pedro Brilhadori',
+    'Raul Benado',
+    'Wallison Pereira'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +47,7 @@ class _TelaAlunosState extends State<TelaAlunos> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 3,
+              itemCount: lista.length,
               itemBuilder: (context, index) {
                 return Container(
                   child: ListTile(
