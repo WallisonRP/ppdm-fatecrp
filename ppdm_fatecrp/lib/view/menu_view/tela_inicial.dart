@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../model/card_itens.dart';
+import '../../model/card_itens.dart';
 
 class TelaInicial extends StatefulWidget {
   const TelaInicial({super.key});
@@ -12,26 +12,9 @@ class TelaInicial extends StatefulWidget {
 }
 
 class _TelaInicialState extends State<TelaInicial> {
-  int _indiceAtual = 0;
-
   @override
   Widget build(BuildContext context) {
-    //     List<Widget> _telas = [
-    //   Inicio(_pesquisa),
-    //   EmAlta(),
-    //   Inscricoes(),
-    //   Biblioteca(),
-    // ];
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffD9D9D9),
-        title: Text(
-          "Página inicial",
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-      body: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -83,24 +66,6 @@ class _TelaInicialState extends State<TelaInicial> {
             ],
           )
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _indiceAtual,
-          onTap: (index) {
-            setState(() {
-              _indiceAtual = index;
-            });
-          },
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Color(0xffD9D9D9),
-          fixedColor: Colors.blue,
-          unselectedItemColor: Colors.black,
-          items: [
-            BottomNavigationBarItem(label: 'Inicio', icon: Icon(Icons.home)),
-            BottomNavigationBarItem(label: 'Alunos', icon: Icon(Icons.person)),
-            BottomNavigationBarItem(label: 'Turmas', icon: Icon(Icons.group)),
-            BottomNavigationBarItem(label: 'Menu', icon: Icon(Icons.menu))
-          ]),
-    );
+      );
   }
 }
