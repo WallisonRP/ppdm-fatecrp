@@ -22,60 +22,62 @@ class _TelaPerfilState extends State<TelaPerfil> {
           ),
           backgroundColor: Color(0xffD9D9D9),
         ),
-        body: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 16, bottom: 16),
-              width: double.infinity,
-              color: Color(0xffD9D9D9),
-              child: Column(
-                children: [
-                  Image.asset('../lib/assets/images/profile.png'),
-                  SizedBox(height: 16),
-                  OutlinedButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Editar Perfil',
-                      style: TextStyle(fontSize: 15, color: Colors.black),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                        side: BorderSide(width: 1),
-                        shape: const RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(8)))),
-                  )
-                ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 16, bottom: 16),
+                width: double.infinity,
+                color: Color(0xffD9D9D9),
+                child: Column(
+                  children: [
+                    Image.asset('../lib/assets/images/profile.png'),
+                    SizedBox(height: 16),
+                    OutlinedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Editar Perfil',
+                        style: TextStyle(fontSize: 15, color: Colors.black),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                          side: BorderSide(width: 1),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)))),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
-              child: CaixaDeTextoRedonda('Nome'),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: CaixaDeTextoRedonda('Sobrenome'),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: CaixaDeTextoRedonda('Data de Nascimento'),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: CaixaDeTextoRedonda('Telefone'),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: CaixaDeTextoRedonda('E-mail'),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: CaixaDeTextoRedonda('RA'),
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: CaixaDeTextoRedonda('Período'),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: CaixaDeTextoRedonda('Nome'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda('Sobrenome'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda('Data de Nascimento'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda('Telefone'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda('E-mail'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda('RA'),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda('Período'),
+              ),
+            ],
+          ),
         ));
   }
 }
