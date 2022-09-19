@@ -68,6 +68,7 @@ flutter:
     - lib/assets/images/profile.png
     - lib/assets/images/profile2.png
     - lib/assets/images/progress_bar.png
+    - lib/assets/images/sobre.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
