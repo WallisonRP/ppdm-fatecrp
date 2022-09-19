@@ -14,7 +14,16 @@ class TelaInicial extends StatefulWidget {
 class _TelaInicialState extends State<TelaInicial> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xffD9D9D9),
+        title: Text(
+          // 'Página inicial',
+          'Página inicial',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
@@ -57,15 +66,39 @@ class _TelaInicialState extends State<TelaInicial> {
           ),
           Wrap(
             children: [
-              CardItens('Alunos', Icons.person),
-              CardItens('Turmas', Icons.group),
-              CardItens('Add Aluno', Icons.person_add),
-              CardItens('Add Turma', Icons.group_add),
-              CardItens('Exportar', Icons.cloud_upload),
-              CardItens('Sobre', Icons.info_outline),
+              // GestureDetector(
+              //   child: CardItens('Alunos', Icons.person),
+              //   onTap: () {
+              //     Navigator.pushNamed(context, 'telaAlunos');
+              //   },
+              // ),
+              // GestureDetector(
+              //     child: CardItens('Turmas', Icons.group),
+              //     onTap: () {
+              //       Navigator.pushNamed(context, 'telaTurmas');
+              //     }),
+              GestureDetector(
+                  child: CardItens('Add Aluno', Icons.person_add),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'cadastrarAluno');
+                  }),
+              GestureDetector(
+                  child: CardItens('Add Turma', Icons.group_add),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'cadastrarTurma');
+                  }),
+              GestureDetector(
+                  child: CardItens('Exportar', Icons.cloud_upload),
+                  onTap: () {}),
+              GestureDetector(
+                  child: CardItens('Sobre', Icons.info_outline),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'sobre');
+                  }),
             ],
           )
         ],
-      );
+      ),
+    );
   }
 }

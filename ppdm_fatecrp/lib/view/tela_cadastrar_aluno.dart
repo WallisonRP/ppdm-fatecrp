@@ -49,7 +49,9 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       child: Text(
                         'Cancelar',
                         style: TextStyle(color: Colors.black),
@@ -60,7 +62,9 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'cadastrarRosto');
+                      },
                       child: Text(
                         'Proximo',
                         style: TextStyle(color: Colors.black),
@@ -75,7 +79,6 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
               ],
             ),
           ),
-        )
-        );
+        ));
   }
 }

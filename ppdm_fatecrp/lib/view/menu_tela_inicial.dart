@@ -16,7 +16,7 @@ class MenuTelaInicial extends StatefulWidget {
 }
 
 class _MenuTelaInicialState extends State<MenuTelaInicial> {
-  int _indiceAtual = 2;
+  int _indiceAtual = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +27,7 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
       TelaMenu(),
     ];
 
-    List _titulos = ['Página inicial', 'Alunos', 'Turmas', 'Menu'];
-
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffD9D9D9),
-        title: Text(
-          // 'Página inicial',
-          _titulos[_indiceAtual],
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
       body: _telas[_indiceAtual],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _indiceAtual,

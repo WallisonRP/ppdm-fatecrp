@@ -28,6 +28,14 @@ class _TelaAlunosState extends State<TelaAlunos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xffD9D9D9),
+        title: Text(
+          // 'Página inicial',
+          'Alunos',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
       body: Column(
         children: [
           Container(
@@ -86,8 +94,11 @@ class _TelaAlunosState extends State<TelaAlunos> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        mini: true,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, 'cadastrarAluno');
+        },
       ),
     );
   }
