@@ -13,6 +13,17 @@ import 'package:ppdm_fatecrp/view/turma.dart';
 void main() {
   runApp(MaterialApp(
     home: TelaSobre(),
+    initialRoute: 'login',
+    routes: {
+      'login' : (context) => TelaDeLogin(),
+      'cadastro' : (context) => TelaDeCadastro(),
+      'telaInicial' : (context) => MenuTelaInicial(),
+      'cadastrarAluno' : (context) => TelaCadastrarAluno(),
+      'cadastrarRosto' : (context) => TelaCadastrarRosto(),
+      'sobre' : (context) => TelaSobre(),
+      'verPerfil' : (context) => TelaPerfil(),
+      'editarPerfil' : (context) => EditarPerfilAluno(),
+    },
     debugShowCheckedModeBanner: false,
   ));
 }
