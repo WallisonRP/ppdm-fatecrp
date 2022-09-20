@@ -23,9 +23,8 @@ class _TelaTurmasState extends State<TelaTurmas> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
-            color: Colors.black
-          ),
+        automaticallyImplyLeading: false,
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Color(0xffD9D9D9),
         title: Text(
           // 'Página inicial',

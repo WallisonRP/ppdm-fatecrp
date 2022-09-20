@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'menu_view/tela_alunos.dart';
+import 'body_view/tela_alunos.dart';
 
 class TelaCadastrarRosto extends StatefulWidget {
   const TelaCadastrarRosto({super.key});

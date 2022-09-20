@@ -33,6 +33,7 @@ class _TelaAlunosState extends State<TelaAlunos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         iconTheme: IconThemeData(color: Colors.black, opacity: 1),
         backgroundColor: Color(0xffD9D9D9),
         title: Text(
