@@ -19,6 +19,9 @@ class _TelaPerfilState extends State<TelaPerfil> {
 
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.black
+          ),
           title: Text(
             'Perfil',
             style: TextStyle(color: Colors.black),
@@ -34,22 +37,8 @@ class _TelaPerfilState extends State<TelaPerfil> {
                 color: Color(0xffD9D9D9),
                 child: Column(
                   children: [
-                    Image.asset('../lib/assets/images/profile.png'),
-                    SizedBox(height: 16),
-                    OutlinedButton(
-                      onPressed: () {
-                        print(pessoa['nome']);
-                      },
-                      child: Text(
-                        'Perfil',
-                        style: TextStyle(fontSize: 15, color: Colors.black),
-                      ),
-                      style: OutlinedButton.styleFrom(
-                          side: BorderSide(width: 1),
-                          shape: const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(8)))),
-                    )
+                    Image.asset('lib/assets/images/profile.png'),
+                    SizedBox(height: 16)
                   ],
                 ),
               ),
@@ -86,3 +75,21 @@ class _TelaPerfilState extends State<TelaPerfil> {
         ));
   }
 }
+
+
+/*
+OutlinedButton(
+                      onPressed: () {
+                        print(pessoa['nome']);
+                      },
+                      child: Text(
+                        'Perfil',
+                        style: TextStyle(fontSize: 15, color: Colors.black),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                          side: BorderSide(width: 1),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)))),
+                    )
+*/

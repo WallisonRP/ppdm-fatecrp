@@ -19,6 +19,10 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xffD9D9D9),
+        iconTheme: IconThemeData(
+            color: Colors.black
+          ),
         title: Text('Nova turma'),
       ),
       body: SingleChildScrollView(

@@ -14,6 +14,9 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.black
+          ),
           title: Text(
             'Cadastrar aluno',
             style: TextStyle(color: Colors.black),

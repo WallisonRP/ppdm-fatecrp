@@ -16,6 +16,9 @@ class _TelaInicialState extends State<TelaInicial> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+            color: Colors.black
+          ),
         backgroundColor: Color(0xffD9D9D9),
         title: Text(
           // 'Página inicial',
@@ -41,7 +44,7 @@ class _TelaInicialState extends State<TelaInicial> {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Aqui você encontra as principais ferramentas do\naplicativo.",
+                      "Aqui você encontra as principais\nferramentas do aplicativo.",
                       textAlign: TextAlign.start,
                       style:
                           TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
@@ -49,7 +52,7 @@ class _TelaInicialState extends State<TelaInicial> {
                   ],
                 ),
                 Image.asset(
-                  '../lib/assets/images/home_image.png',
+                  'lib/assets/images/home_image.png',
                   width: 156,
                   height: 156,
                 )

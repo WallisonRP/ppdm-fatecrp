@@ -28,6 +28,9 @@ class _TurmaState extends State<Turma> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+            color: Colors.black
+          ),
         backgroundColor: Color(0xffD9D9D9),
         title: Text(
           '4° Semestre',

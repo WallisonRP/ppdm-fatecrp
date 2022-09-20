@@ -19,6 +19,10 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xffD9D9D9),
+        iconTheme: IconThemeData(
+            color: Colors.black
+          ),
         title: Text('Cadastrar aluno'),
       ),
       body: Container(
@@ -34,11 +38,11 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
               height: 20,
             ),
             Image.asset(
-              '../lib/assets/images/profile2.png',
+              'lib/assets/images/profile2.png',
               width: 500,
               height: 250,
             ),
-            Image.asset('../lib/assets/images/progress_bar.png'),
+            Image.asset('lib/assets/images/progress_bar.png'),
             SizedBox(
               height: 60,
             ),

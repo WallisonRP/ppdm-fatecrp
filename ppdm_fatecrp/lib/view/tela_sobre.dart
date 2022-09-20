@@ -16,6 +16,9 @@ class _TelaSobreState extends State<TelaSobre> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+            color: Colors.black
+          ),
         title: Text('Sobre'),
       ),
       body: Container(

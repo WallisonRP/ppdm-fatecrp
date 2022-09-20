@@ -14,6 +14,9 @@ class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+            color: Colors.black
+          ),
         title: Text('Editar Perfil'),
         backgroundColor: Color(0xffD9D9D9)
       ),
