@@ -4,4 +4,5 @@ Repositório criado para desenvolvimento do aplicativo apresentado a disciplina 
 
 Desenvolvedores:
 Gabriel Afonso Pinho de Oliveira
+<\br>
 Wallison Franklin Pereira
