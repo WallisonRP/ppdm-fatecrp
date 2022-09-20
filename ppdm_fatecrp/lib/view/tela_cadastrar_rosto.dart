@@ -10,6 +10,11 @@ class TelaCadastrarRosto extends StatefulWidget {
 }
 
 class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
+  var snackBar = SnackBar(
+    content: Text('Aluno cadastrado com sucesso!'),
+    backgroundColor: Colors.green,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,8 +60,31 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.popUntil(
-                        context, ModalRoute.withName('telaInicial'));
+                    showDialog(
+                        context: context,
+                        builder: (_) {
+                          return AlertDialog(
+                            title: Text('Adicionar Aluno'),
+                            content: Text('Confirmar cadastro de aluno?'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Cancelar')),
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.all(16)),
+                                  onPressed: () {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
+                                    Navigator.popUntil(context,
+                                        ModalRoute.withName('telaInicial'));
+                                  },
+                                  child: Text("Confirmar"))
+                            ],
+                          );
+                        });
                   },
                   child: Text(
                     'Proximo',

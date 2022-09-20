@@ -41,7 +41,7 @@ class _TelaInicialState extends State<TelaInicial> {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "Aqui você encontra as\nprincipais ferramentas do\naplicativo.",
+                      "Aqui você encontra as principais ferramentas do\naplicativo.",
                       textAlign: TextAlign.start,
                       style:
                           TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
