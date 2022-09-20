@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 
+import '../../controller/custom_search_delegate.dart';
+import '../../model/aluno.dart';
+
 class TelaAlunos extends StatefulWidget {
   const TelaAlunos({super.key});
 
@@ -10,31 +13,44 @@ class TelaAlunos extends StatefulWidget {
 }
 
 class _TelaAlunosState extends State<TelaAlunos> {
-  List lista = [
-    'Camila Silva',
-    'Ciro Abib',
-    'Fabio Chubinho',
-    'Gabriel Oliveira',
-    'Guilherme Crisóstopo',
-    'Guilherme Lima Beta',
-    'Gustavo Latrocínio',
-    'Gustavo Macrino',
-    'Juliano Henrico',
-    'Maria Duda',
-    'Pedro Brilhadori',
-    'Raul Benado',
-    'Wallison Pereira'
+  List pessoas = [
+    {'nome': 'Camila', 'sobrenome': 'Silva'},
+    {'nome': 'Ciro', 'sobrenome': 'Abib'},
+    {'nome': 'Fábio', 'sobrenome': 'Chubinho'},
+    {'nome': 'Gabriel', 'sobrenome': 'Oliveira'},
+    {'nome': 'Guilherme', 'sobrenome': 'Crisóstopo'},
+    {'nome': 'Guilherme', 'sobrenome': 'Lima Beta'},
+    {'nome': 'Gustavo', 'sobrenome': 'Latrocínio'},
+    {'nome': 'Gustavo', 'sobrenome': 'Macrino'},
+    {'nome': 'Juliano', 'sobrenome': 'Henrico'},
+    {'nome': 'Maria', 'sobrenome': 'Duda'},
+    {'nome': 'Pedro', 'sobrenome': 'Brilhadori'},
+    {'nome': 'Raul', 'sobrenome': 'Benado'},
+    {'nome': 'Wallison', 'sobrenome': 'Pereira'},
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black, opacity: 1),
         backgroundColor: Color(0xffD9D9D9),
         title: Text(
           // 'Página inicial',
           'Alunos',
           style: TextStyle(color: Colors.black),
         ),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                String? result = await showSearch(
+                    context: context, delegate: CustomSearchDelegate(pessoas));
+                // setState(() {
+                //   _pesquisa = result;
+                // });
+              },
+              icon: Icon(Icons.search))
+        ],
       ),
       body: Column(
         children: [
@@ -55,38 +71,14 @@ class _TelaAlunosState extends State<TelaAlunos> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: lista.length,
+              itemCount: pessoas.length,
               itemBuilder: (context, index) {
-                return Container(
-                  child: ListTile(
-                    minVerticalPadding: 20,
-                    title: Text(lista[index]),
-                    subtitle: Text('(16) 98765-4321'),
-                    leading: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color(0xffD9D9D9)),
-                      width: 60,
-                      height: 70,
-                    ),
-                    trailing: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.keyboard_arrow_right,
-                          color: Colors.black,
-                          size: 28,
-                        )
-                      ],
-                    ),
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                          width: 1.0,
-                          color: Color.fromARGB(255, 224, 224, 224)),
-                    ),
-                  ),
+                return GestureDetector(
+                  child: Aluno(pessoas[index]),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'verPerfil',
+                        arguments: pessoas[index]);
+                  },
                 );
               },
             ),

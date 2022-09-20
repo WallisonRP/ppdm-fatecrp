@@ -14,6 +14,9 @@ class TelaPerfil extends StatefulWidget {
 class _TelaPerfilState extends State<TelaPerfil> {
   @override
   Widget build(BuildContext context) {
+    Map pessoa = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -34,9 +37,11 @@ class _TelaPerfilState extends State<TelaPerfil> {
                     Image.asset('../lib/assets/images/profile.png'),
                     SizedBox(height: 16),
                     OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        print(pessoa['nome']);
+                      },
                       child: Text(
-                        'Editar Perfil',
+                        'Perfil',
                         style: TextStyle(fontSize: 15, color: Colors.black),
                       ),
                       style: OutlinedButton.styleFrom(
@@ -50,11 +55,11 @@ class _TelaPerfilState extends State<TelaPerfil> {
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
-                child: CaixaDeTextoRedonda('Nome'),
+                child: CaixaDeTextoRedonda(pessoa['nome']),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('Sobrenome'),
+                child: CaixaDeTextoRedonda(pessoa['sobrenome']),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
@@ -62,19 +67,19 @@ class _TelaPerfilState extends State<TelaPerfil> {
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('Telefone'),
+                child: CaixaDeTextoRedonda('(16) 98765-4321'),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('E-mail'),
+                child: CaixaDeTextoRedonda('fatec@fatec.sp.gov.br'),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('RA'),
+                child: CaixaDeTextoRedonda('204048484848'),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('Período'),
+                child: CaixaDeTextoRedonda('Diurno'),
               ),
             ],
           ),
