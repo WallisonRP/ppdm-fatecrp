@@ -63,7 +63,7 @@ class _TelaPerfilState extends State<TelaPerfil> {
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('Data de Nascimento'),
+                child: CaixaDeTextoRedonda('01/01/2001'),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),

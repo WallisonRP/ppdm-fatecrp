@@ -10,6 +10,11 @@ class TelaCadastrarTurma extends StatefulWidget {
 }
 
 class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
+  var snackBar = SnackBar(
+    content: Text('Turma cadastrada com sucesso!'),
+    backgroundColor: Colors.green,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +64,31 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.popUntil(
-                          context, ModalRoute.withName('telaInicial'));
+                      showDialog(
+                          context: context,
+                          builder: (_) {
+                            return AlertDialog(
+                              title: Text('Adicionar Turma'),
+                              content: Text('Confirmar cadastro de turma?'),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Text('Cancelar')),
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        padding: EdgeInsets.all(16)),
+                                    onPressed: () {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
+                                      Navigator.popUntil(context,
+                                          ModalRoute.withName('telaInicial'));
+                                    },
+                                    child: Text("Confirmar"))
+                              ],
+                            );
+                          });
                     },
                     child: Text(
                       'Criar',
