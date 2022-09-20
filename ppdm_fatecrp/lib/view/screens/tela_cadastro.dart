@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../model/botao_full_width.dart';
-import '../model/caixa_de_texto.dart';
+import '../../model/botao_full_width.dart';
+import '../../model/caixa_de_texto.dart';
 
 class TelaDeCadastro extends StatefulWidget {
   const TelaDeCadastro({super.key});
@@ -46,7 +46,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
             SizedBox(
               height: 80,
             ),
-            BotaoFullWidth('Cadastrar'),
+            BotaoFullWidth('Cadastrar', context, 'telaInicial'),
             SizedBox(
               height: 60,
             ),

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../model/card_itens.dart';
+import '../../model/card_itens.dart';
 
 class TelaSobre extends StatefulWidget {
   const TelaSobre({super.key});

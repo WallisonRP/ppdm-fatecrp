@@ -2,17 +2,17 @@
 
 import 'package:flutter/material.dart';
 
-CardItens(titulo, icon) {
-
+CardItens(titulo, icon, context) {
+  var largura = MediaQuery.of(context).size.width;
   return Container(
-    margin: EdgeInsets.only(left: 16, bottom: 16),
-    padding: EdgeInsets.only(top: 8),
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10), color: Color(0xffD9D9D9)),
-    width: 100,
-    height: 74, 
+    // width: largura ,
+    height: 700,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      // mainAxisSize: MainAxisSize.min,
       children: [
         Icon(
           icon,

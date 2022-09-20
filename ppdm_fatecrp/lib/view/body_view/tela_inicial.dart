@@ -14,6 +14,8 @@ class TelaInicial extends StatefulWidget {
 class _TelaInicialState extends State<TelaInicial> {
   @override
   Widget build(BuildContext context) {
+    var largura = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -34,26 +36,31 @@ class _TelaInicialState extends State<TelaInicial> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Seja bem vindo(a)!",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Aqui você encontra as principais\nferramentas do aplicativo.",
-                      textAlign: TextAlign.start,
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                    )
-                  ],
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Seja bem vindo(a)!",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Aqui você encontra as principais ferramentas do aplicativo.",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 12, fontWeight: FontWeight.w500),
+                      )
+                    ],
+                  ),
                 ),
-                Image.asset(
-                  'lib/assets/images/home_image.png',
-                  width: 156,
-                  height: 156,
+                Expanded(
+                  child: Image.asset(
+                    'lib/assets/images/home_image.png',
+                    width: 156,
+                    height: 156,
+                  ),
                 )
               ],
             ),
@@ -66,7 +73,59 @@ class _TelaInicialState extends State<TelaInicial> {
                   fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 2),
             ),
           ),
-          Wrap(
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(16),
+              child: GridView.count(
+                childAspectRatio: (100 / 74),
+                crossAxisCount: 3,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                children: [
+                  GestureDetector(
+                      child: CardItens('Add Aluno', Icons.person_add, context),
+                      onTap: () {
+                        Navigator.pushNamed(context, 'cadastrarAluno');
+                      }),
+                  GestureDetector(
+                      child: CardItens('Add Turma', Icons.group_add, context),
+                      onTap: () {
+                        Navigator.pushNamed(context, 'cadastrarTurma');
+                      }),
+                  GestureDetector(
+                      child: CardItens('Exportar', Icons.cloud_upload, context),
+                      onTap: () {}),
+                  GestureDetector(
+                      child: CardItens('Sobre', Icons.info_outline, context),
+                      onTap: () {
+                        Navigator.pushNamed(context, 'sobre');
+                      }),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+/*
+
+                  // GestureDetector(
+                  //   child: CardItens('Alunos', Icons.person),
+                  //   onTap: () {
+                  //     Navigator.pushNamed(context, 'telaAlunos');
+                  //   },
+                  // ),
+                  // GestureDetector(
+                  //     child: CardItens('Turmas', Icons.group),
+                  //     onTap: () {
+                  //       Navigator.pushNamed(context, 'telaTurmas');
+                  //     }),
+
+                  
+Wrap(
             children: [
               // GestureDetector(
               //   child: CardItens('Alunos', Icons.person),
@@ -80,27 +139,23 @@ class _TelaInicialState extends State<TelaInicial> {
               //       Navigator.pushNamed(context, 'telaTurmas');
               //     }),
               GestureDetector(
-                  child: CardItens('Add Aluno', Icons.person_add),
+                  child: CardItens('Add Aluno', Icons.person_add, context),
                   onTap: () {
                     Navigator.pushNamed(context, 'cadastrarAluno');
                   }),
               GestureDetector(
-                  child: CardItens('Add Turma', Icons.group_add),
+                  child: CardItens('Add Turma', Icons.group_add, context),
                   onTap: () {
                     Navigator.pushNamed(context, 'cadastrarTurma');
                   }),
               GestureDetector(
-                  child: CardItens('Exportar', Icons.cloud_upload),
+                  child: CardItens('Exportar', Icons.cloud_upload, context),
                   onTap: () {}),
               GestureDetector(
-                  child: CardItens('Sobre', Icons.info_outline),
+                  child: CardItens('Sobre', Icons.info_outline, context),
                   onTap: () {
                     Navigator.pushNamed(context, 'sobre');
                   }),
             ],
           )
-        ],
-      ),
-    );
-  }
-}
+*/

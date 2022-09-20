@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../model/caixa_de_texto_redonda.dart';
+import '../../model/caixa_de_texto_redonda.dart';
+
 
 class TelaCadastrarAluno extends StatefulWidget {
   const TelaCadastrarAluno({super.key});

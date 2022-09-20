@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ppdm_fatecrp/model/perfil_menu.dart';
 
-class TesteDrawer extends StatelessWidget {
-  const TesteDrawer({super.key});
+class MenuDrawer extends StatelessWidget {
+  const MenuDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +16,21 @@ class TesteDrawer extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(110),
                   child: GestureDetector(
+                      onTap: () {
+                        Navigator.popUntil(
+                            context, ModalRoute.withName('login'));
+                      },
                       child: Icon(
-                    Icons.logout,
-                    color: Color.fromARGB(255, 179, 39, 29),
-                  )),
+                        Icons.logout,
+                        color: Color.fromARGB(255, 179, 39, 29),
+                      )),
                 ),
               ],
               currentAccountPicture: CircleAvatar(
                 child: Image.asset('lib/assets/images/profile.png'),
               ),
               accountName: Text('Gabriel Oliveira'),
-              accountEmail: Text('gabriel.gap@gmail.com')),
+              accountEmail: Text('oliveira.gap@gmail.com')),
           GestureDetector(
             child: Container(
               decoration: BoxDecoration(

@@ -2,12 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-import '../model/card_itens.dart';
-import '../model/testDrawer.dart';
-import 'body_view/tela_alunos.dart';
-import 'body_view/tela_inicial.dart';
-import 'body_view/tela_menu.dart';
-import 'body_view/tela_turmas.dart';
+import '../../model/menuDrawer.dart';
+import '../body_view/tela_alunos.dart';
+import '../body_view/tela_inicial.dart';
+import '../body_view/tela_menu.dart';
+import '../body_view/tela_turmas.dart';
+
+
 
 class MenuTelaInicial extends StatefulWidget {
   const MenuTelaInicial({super.key});
@@ -41,7 +42,7 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
     return Scaffold(
       key: _scaffoldKey,
       body: _bodies[_indiceAtual],
-      endDrawer: TesteDrawer(),
+      endDrawer: MenuDrawer(),
 
       drawerEnableOpenDragGesture: false,
       bottomNavigationBar: BottomNavigationBar(

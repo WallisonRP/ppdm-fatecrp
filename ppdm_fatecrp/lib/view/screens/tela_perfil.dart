@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../model/caixa_de_texto_redonda.dart';
+import '../../model/caixa_de_texto_redonda.dart';
 
 class TelaPerfil extends StatefulWidget {
   const TelaPerfil({super.key});

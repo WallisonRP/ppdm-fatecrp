@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-BotaoFullWidth(rotulo) {
+BotaoFullWidth(rotulo, context, rota) {
   return Container(
     width: double.infinity,
     child: ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, rota);
+      },
       style: ElevatedButton.styleFrom(
           backgroundColor: Color.fromARGB(255, 194, 194, 194),
           padding: EdgeInsets.fromLTRB(0, 24, 0, 24),

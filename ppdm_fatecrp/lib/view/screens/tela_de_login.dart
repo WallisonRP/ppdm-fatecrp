@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../model/botao_full_width.dart';
-import '../model/caixa_de_texto.dart';
+import '../../model/botao_full_width.dart';
+import '../../model/caixa_de_texto.dart';
 
 class TelaDeLogin extends StatefulWidget {
   const TelaDeLogin({super.key});
@@ -43,15 +43,21 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
             ),
             Align(
               alignment: Alignment.topRight,
-              child: Text(
-                "Esqueceu seu senha ?",
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+              child: GestureDetector(
+                onTap: () {},
+                child: Text(
+                  "Esqueceu seu senha ?",
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Color.fromARGB(255, 15, 49, 241)),
+                ),
               ),
             ),
             SizedBox(
               height: 30,
             ),
-            BotaoFullWidth('Entrar'),
+            BotaoFullWidth('Entrar', context, 'telaInicial'),
             SizedBox(
               height: 60,
             ),
@@ -62,7 +68,7 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
             SizedBox(
               height: 16,
             ),
-            BotaoFullWidth('Cadastrar'),
+            BotaoFullWidth('Cadastrar', context, 'cadastro'),
           ],
         ),
       ),
