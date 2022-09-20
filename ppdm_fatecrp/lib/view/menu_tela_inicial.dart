@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/card_itens.dart';
+import '../model/testDrawer.dart';
 import 'menu_view/tela_alunos.dart';
 import 'menu_view/tela_inicial.dart';
 import 'menu_view/tela_menu.dart';
@@ -17,6 +18,15 @@ class MenuTelaInicial extends StatefulWidget {
 
 class _MenuTelaInicialState extends State<MenuTelaInicial> {
   int _indiceAtual = 0;
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+    void _onItemTapped(int index) {
+    index == 3
+        ? _scaffoldKey.currentState!.openEndDrawer()
+        : setState(() {
+            _indiceAtual = index;
+          });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +38,18 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
     ];
 
     return Scaffold(
+      key: _scaffoldKey,
       body: _telas[_indiceAtual],
+      endDrawer: TesteDrawer(),
+      drawerEnableOpenDragGesture: false,
       bottomNavigationBar: BottomNavigationBar(
+          
           currentIndex: _indiceAtual,
           onTap: (index) {
-            setState(() {
-              _indiceAtual = index;
-            });
+            _onItemTapped(index);
+            // setState(() {
+            //   _indiceAtual = index;
+            // });
           },
           type: BottomNavigationBarType.fixed,
           backgroundColor: Color(0xffD9D9D9),
@@ -45,7 +60,11 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
             BottomNavigationBarItem(label: 'Alunos', icon: Icon(Icons.person)),
             BottomNavigationBarItem(label: 'Turmas', icon: Icon(Icons.group)),
             BottomNavigationBarItem(label: 'Menu', icon: Icon(Icons.menu))
-          ]),
+          ])
+,
     );
   }
 }
+
+
+
