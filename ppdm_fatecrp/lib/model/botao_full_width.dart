@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 BotaoFullWidth(rotulo, context, rota) {
   return Container(
+    margin: EdgeInsets.symmetric(horizontal: 16),
     width: double.infinity,
     child: ElevatedButton(
       onPressed: () {
@@ -9,9 +10,9 @@ BotaoFullWidth(rotulo, context, rota) {
       },
       style: ElevatedButton.styleFrom(
           backgroundColor: Color.fromARGB(255, 194, 194, 194),
-          padding: EdgeInsets.fromLTRB(0, 24, 0, 24),
+          padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(14))),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       child: Text(
         rotulo,
         style: TextStyle(
