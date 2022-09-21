@@ -75,8 +75,8 @@ class _TelaInicialState extends State<TelaInicial> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(16),
               child: GridView.count(
+                padding: EdgeInsets.all(16),
                 childAspectRatio: (100 / 74),
                 crossAxisCount: 3,
                 mainAxisSpacing: 16,

@@ -23,7 +23,10 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
         iconTheme: IconThemeData(
             color: Colors.black
           ),
-        title: Text('Nova turma'),
+        title: Text(
+          'Cadastrar turma',
+          style: TextStyle(color: Colors.black),
+          ),
       ),
       body: SingleChildScrollView(
         child: Container(

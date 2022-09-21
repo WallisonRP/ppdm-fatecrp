@@ -22,7 +22,10 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
         iconTheme: IconThemeData(
             color: Colors.black
           ),
-        title: Text('Cadastrar aluno'),
+        title: Text(
+          'Cadastrar aluno',
+          style: TextStyle(color: Colors.black),
+          ),
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(16, 30, 16, 30),

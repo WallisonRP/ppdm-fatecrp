@@ -18,10 +18,10 @@ class MenuTelaInicial extends StatefulWidget {
 }
 
 class _MenuTelaInicialState extends State<MenuTelaInicial> {
-  int _indiceAtual = 0;
+  var _indiceAtual = 0;
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(index) {
     index == 3
         ? _scaffoldKey.currentState!.openEndDrawer()
         : setState(() {
