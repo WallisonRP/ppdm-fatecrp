@@ -1,4 +1,0 @@
-#Wed Sep 21 10:27:42 BRT 2022
-base.0=C\:\\Users\\walli\\OneDrive - Fatec Centro Paula Souza\\Desktop\\4 Semestre\\06 - Prog p Disp Moveis\\github\\ppdm-fatecrp\\ppdm_fatecrp\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
