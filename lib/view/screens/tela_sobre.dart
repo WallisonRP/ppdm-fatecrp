@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../model/card_itens.dart';
+import '../../model/participantes.dart';
 
 class TelaSobre extends StatefulWidget {
   const TelaSobre({super.key});
@@ -37,7 +38,7 @@ class _TelaSobreState extends State<TelaSobre> {
             ),
             Flexible(
                 child: Text(
-                    'Aqui você encontra tudo sobre a equipe responsável por este projeto, Aqui você encontra tudo sobre a equipe responsável por este projeto ...Aqui você encontra tudo sobre a equipe responsável por este projeto ...Aqui você encontra tudo sobre a equipe responsável por este projeto ...Aqui você encontra tudo sobre a equipe responsável por este projeto ...Aqui você encontra tudo sobre a equipe responsável por este projeto ...Aqui você encontra tudo sobre a equipe responsável por este dsaa')),
+                    'Aplicativo criado para a disciplina de "Programação para dispositivos móveis" da FATEC de Ribeirão Preto - SP. Com o intuito de controlar a frequência dos alunos do 4º Semestre do curso de Análise e Desenvolvimento de Sistemas.')),
             SizedBox(
               height: 35,
             ),
@@ -46,93 +47,31 @@ class _TelaSobreState extends State<TelaSobre> {
             SizedBox(
               height: 15,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Color.fromARGB(255, 224, 224, 224)),
-                  margin: EdgeInsets.only(right: 10),
-                  width: 80,
-                  height: 80,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Rodrigo de Oliveira Plotze',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600)),
-                    SizedBox(
-                      height: 4,
-                    ),
-                    Text('Orientador')
-                  ],
-                )
-              ],
+            Pessoa(
+              nome: 'Rodrigo de Oliveira Plotze',
+              funcao: 'Professor orientador',
+              foto: 'rodrigo',
+              email: 'rodrigo.plotze',
             ),
             SizedBox(
               height: 18,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Color.fromARGB(255, 224, 224, 224)),
-                  margin: EdgeInsets.only(right: 10),
-                  width: 80,
-                  height: 80,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Gabriel Afonso Pinho de Oliveira',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600)),
-                    SizedBox(
-                      height: 4,
-                    ),
-                    Text('Desenvolvedor')
-                  ],
-                )
-              ],
+            Pessoa(
+              nome: 'Gabriel Afonso Pinho de Oliveira',
+              funcao: 'Desenvolvedor',
+              foto: 'gabriel',
+              email: 'gabriel.oliveira237',
             ),
             SizedBox(
               height: 18,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Color.fromARGB(255, 224, 224, 224)),
-                  margin: EdgeInsets.only(right: 10),
-                  width: 80,
-                  height: 80,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Wallison Franklin Pereira',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600)),
-                    SizedBox(
-                      height: 4,
-                    ),
-                    Text('Desenvolvedor')
-                  ],
-                )
-              ],
+            Pessoa(
+              nome: 'Wallison Franklin Pereira',
+              funcao: 'Desenvolvedor',
+              foto: 'wallison',
+              email: 'wallison.pereira',
             ),
+            
           ],
         ),
       ),

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, unused_import
+
 import 'package:flutter/material.dart';
 import 'package:ppdm_fatecrp/view/body_view/tela_alunos.dart';
 import 'package:ppdm_fatecrp/view/body_view/tela_turmas.dart';
