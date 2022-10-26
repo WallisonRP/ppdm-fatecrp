@@ -1,16 +1,7 @@
-# ppdm_fatecrp
+# ppdm-fatecrp
 
-A new Flutter project.
+Repositório criado para desenvolvimento do aplicativo apresentado a disciplina de "Programação para dispositivos móveis" da FATEC de Ribeirão Preto - SP.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Desenvolvedores:
+Gabriel Afonso Pinho de Oliveira <br>
+Wallison Franklin Pereira
