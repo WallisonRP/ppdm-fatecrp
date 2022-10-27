@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ppdm_fatecrp/model/perfil_menu.dart';
+import 'package:ppdm_fatecrp/view/widgets/perfil_menu.dart';
 
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({super.key});

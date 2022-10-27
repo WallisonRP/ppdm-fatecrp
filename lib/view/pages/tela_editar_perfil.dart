@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
 
-import '../../model/caixa_de_texto_redonda.dart';
+import '../widgets/caixa_de_texto_redonda.dart';
 
 
-class TelaCadastrarAluno extends StatefulWidget {
-  const TelaCadastrarAluno({super.key});
+class EditarPerfilAluno extends StatefulWidget {
+  const EditarPerfilAluno({super.key});
 
   @override
-  State<TelaCadastrarAluno> createState() => _TelaCadastrarAlunoState();
+  State<EditarPerfilAluno> createState() => _EditarPerfilAlunoState();
 }
 
-class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
+class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
             color: Colors.black
           ),
-          title: Text(
-            'Cadastrar aluno',
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Color(0xffD9D9D9),
-        ),
-        body: SingleChildScrollView(
+        title: Text('Editar Perfil'),
+        backgroundColor: Color(0xffD9D9D9)
+      ),
+      body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(16),
             child: Column(
@@ -53,11 +50,9 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                      onPressed: () {},
                       child: Text(
-                        'Cancelar',
+                        'Voltar',
                         style: TextStyle(color: Colors.black),
                       ),
                       style: ElevatedButton.styleFrom(
@@ -66,11 +61,9 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'cadastrarRosto');
-                      },
+                      onPressed: () {},
                       child: Text(
-                        'Proximo',
+                        'Salvar',
                         style: TextStyle(color: Colors.black),
                       ),
                       style: ElevatedButton.styleFrom(
@@ -83,6 +76,7 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
               ],
             ),
           ),
-        ));
+        ),
+    );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../model/menuDrawer.dart';
+import '../widgets/menuDrawer.dart';
 
 class TelaMenu extends StatefulWidget {
   const TelaMenu({super.key});

@@ -1,27 +1,30 @@
 import 'package:flutter/material.dart';
 
-import '../../model/caixa_de_texto_redonda.dart';
+import '../widgets/caixa_de_texto_redonda.dart';
 
 
-class EditarPerfilAluno extends StatefulWidget {
-  const EditarPerfilAluno({super.key});
+class TelaCadastrarAluno extends StatefulWidget {
+  const TelaCadastrarAluno({super.key});
 
   @override
-  State<EditarPerfilAluno> createState() => _EditarPerfilAlunoState();
+  State<TelaCadastrarAluno> createState() => _TelaCadastrarAlunoState();
 }
 
-class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
+class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
+        appBar: AppBar(
+          iconTheme: IconThemeData(
             color: Colors.black
           ),
-        title: Text('Editar Perfil'),
-        backgroundColor: Color(0xffD9D9D9)
-      ),
-      body: SingleChildScrollView(
+          title: Text(
+            'Cadastrar aluno',
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Color(0xffD9D9D9),
+        ),
+        body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(16),
             child: Column(
@@ -50,9 +53,11 @@ class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       child: Text(
-                        'Voltar',
+                        'Cancelar',
                         style: TextStyle(color: Colors.black),
                       ),
                       style: ElevatedButton.styleFrom(
@@ -61,9 +66,11 @@ class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'cadastrarRosto');
+                      },
                       child: Text(
-                        'Salvar',
+                        'Proximo',
                         style: TextStyle(color: Colors.black),
                       ),
                       style: ElevatedButton.styleFrom(
@@ -76,7 +83,6 @@ class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
               ],
             ),
           ),
-        ),
-    );
+        ));
   }
 }

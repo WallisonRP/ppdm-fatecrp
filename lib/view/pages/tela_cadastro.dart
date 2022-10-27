@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../../model/botao_full_width.dart';
-import '../../model/caixa_de_texto.dart';
+import '../widgets/botao_full_width.dart';
+import '../widgets/caixa_de_texto.dart';
 
 class TelaDeCadastro extends StatefulWidget {
   const TelaDeCadastro({super.key});

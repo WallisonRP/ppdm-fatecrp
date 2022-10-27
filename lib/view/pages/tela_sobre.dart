@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../model/card_itens.dart';
+import '../widgets/card_itens.dart';
 import '../../model/participantes.dart';
 
 class TelaSobre extends StatefulWidget {

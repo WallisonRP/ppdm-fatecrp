@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../../model/botao_full_width.dart';
-import '../../model/caixa_de_texto.dart';
+import '../widgets/botao_full_width.dart';
+import '../widgets/caixa_de_texto.dart';
 
 class TelaDeLogin extends StatefulWidget {
   const TelaDeLogin({super.key});

@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 
-import '../../model/menuDrawer.dart';
-import '../body_view/tela_alunos.dart';
-import '../body_view/tela_inicial.dart';
-import '../body_view/tela_menu.dart';
-import '../body_view/tela_turmas.dart';
+import '../widgets/menuDrawer.dart';
+import '../bottom_pages/tela_alunos.dart';
+import '../bottom_pages/tela_inicial.dart';
+import '../bottom_pages/tela_menu.dart';
+import '../bottom_pages/tela_turmas.dart';
 
 
 

@@ -1,18 +1,18 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
-import 'package:ppdm_fatecrp/view/body_view/tela_alunos.dart';
-import 'package:ppdm_fatecrp/view/body_view/tela_turmas.dart';
-import 'package:ppdm_fatecrp/view/screens/main_navigation.dart';
-import 'package:ppdm_fatecrp/view/screens/tela_cadastrar_aluno.dart';
-import 'package:ppdm_fatecrp/view/screens/tela_cadastrar_rosto.dart';
-import 'package:ppdm_fatecrp/view/screens/tela_cadastrar_turma.dart';
-import 'package:ppdm_fatecrp/view/screens/tela_cadastro.dart';
-import 'package:ppdm_fatecrp/view/screens/tela_de_login.dart';
-import 'package:ppdm_fatecrp/view/screens/tela_editar_perfil.dart';
-import 'package:ppdm_fatecrp/view/screens/tela_perfil.dart';
-import 'package:ppdm_fatecrp/view/screens/tela_sobre.dart';
-import 'package:ppdm_fatecrp/view/screens/turma.dart';
+import 'package:ppdm_fatecrp/view/bottom_pages/tela_alunos.dart';
+import 'package:ppdm_fatecrp/view/bottom_pages/tela_turmas.dart';
+import 'package:ppdm_fatecrp/view/pages/main_navigation.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_cadastrar_aluno.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_cadastrar_rosto.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_cadastrar_turma.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_cadastro.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_de_login.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_editar_perfil.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_perfil.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_sobre.dart';
+import 'package:ppdm_fatecrp/view/pages/turma.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

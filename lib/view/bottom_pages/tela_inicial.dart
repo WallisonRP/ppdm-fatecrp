@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../model/card_itens.dart';
+import '../widgets/card_itens.dart';
 
 class TelaInicial extends StatefulWidget {
   const TelaInicial({super.key});
