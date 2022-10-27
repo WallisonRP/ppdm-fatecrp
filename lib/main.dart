@@ -13,8 +13,44 @@ import 'package:ppdm_fatecrp/view/screens/tela_editar_perfil.dart';
 import 'package:ppdm_fatecrp/view/screens/tela_perfil.dart';
 import 'package:ppdm_fatecrp/view/screens/tela_sobre.dart';
 import 'package:ppdm_fatecrp/view/screens/turma.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  final user = <String, dynamic>{
+    "first": "Ada",
+    "last": "Lovelace",
+    "born": 1815
+  };
+  var db = FirebaseFirestore.instance;
+
+// // Add a new document with a generated ID
+//   db.collection("users").add(user).then((DocumentReference doc) =>
+//       print('DocumentSnapshot added with ID: ${doc.id}'));
+
+// // Create a new user with a first and last name
+//   final user2 = <String, dynamic>{
+//     "first": "Alan",
+//     "middle": "Mathison",
+//     "last": "Turing",
+//     "born": 1912
+//   };
+
+// // Add a new document with a generated ID
+//   db.collection("users").add(user2).then((DocumentReference doc) =>
+//       print('DocumentSnapshot added with ID: ${doc.id}'));
+
+  // await db.collection("users").get().then((event) {
+  //   for (var doc in event.docs) {
+  //     print("${doc.id} => ${doc.data()}");
+  //   }
+  // });
+
   runApp(MaterialApp(
     // home: TelaSobre(),
     initialRoute: 'login',

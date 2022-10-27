@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../controller/custom_search_delegate.dart';
+import '../../controller/firebase/firestore.dart';
 import '../../model/aluno.dart';
 
 class TelaAlunos extends StatefulWidget {
@@ -28,6 +30,12 @@ class _TelaAlunosState extends State<TelaAlunos> {
     {'nome': 'Raul', 'sobrenome': 'Benado'},
     {'nome': 'Wallison', 'sobrenome': 'Pereira'},
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
