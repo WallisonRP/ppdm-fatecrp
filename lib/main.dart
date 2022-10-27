@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:ppdm_fatecrp/view/bottom_pages/tela_alunos.dart';
 import 'package:ppdm_fatecrp/view/bottom_pages/tela_turmas.dart';
 import 'package:ppdm_fatecrp/view/pages/main_navigation.dart';
@@ -18,6 +19,8 @@ import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
+  await dotenv.load(fileName: '../.env');
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -29,9 +32,9 @@ void main() async {
   };
   var db = FirebaseFirestore.instance;
 
-// // Add a new document with a generated ID
-//   db.collection("users").add(user).then((DocumentReference doc) =>
-//       print('DocumentSnapshot added with ID: ${doc.id}'));
+// Add a new document with a generated ID
+  db.collection("users").add(user).then((DocumentReference doc) =>
+      print('DocumentSnapshot added with ID: ${doc.id}'));
 
 // // Create a new user with a first and last name
 //   final user2 = <String, dynamic>{
