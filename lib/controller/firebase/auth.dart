@@ -10,7 +10,10 @@ import '../../view/pages/main_navigation.dart';
 class LoginController {
   final firebaseAuth = FirebaseAuth.instance;
 
-  void login({required String email, required String senha, required BuildContext context}) {
+  void login(
+      {required String email,
+      required String senha,
+      required BuildContext context}) {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((res) {
@@ -57,10 +60,11 @@ class LoginController {
 
       if (userCredential != null) {
         userCredential.user!.updateDisplayName('$nome $sobrenome');
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: ((context) => CheckUserLogin())),
-            (route) => false);
+        Navigator.pop(context);
+        // Navigator.pushAndRemoveUntil(
+        //     context,
+        //     MaterialPageRoute(builder: ((context) => CheckUserLogin())),
+        //     (route) => false);
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

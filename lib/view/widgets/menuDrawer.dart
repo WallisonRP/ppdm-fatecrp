@@ -4,7 +4,9 @@ import 'package:ppdm_fatecrp/view/widgets/perfil_menu.dart';
 import '../../controller/firebase/auth.dart';
 
 class MenuDrawer extends StatelessWidget {
-  const MenuDrawer({super.key});
+  final String nome;
+  final String email;
+  const MenuDrawer({super.key, required this.nome, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +32,8 @@ class MenuDrawer extends StatelessWidget {
               currentAccountPicture: CircleAvatar(
                 child: Image.asset('lib/assets/images/profile.png'),
               ),
-              accountName: Text('Gabriel Oliveira'),
-              accountEmail: Text('oliveira.gap@gmail.com')),
+              accountName: Text(nome),
+              accountEmail: Text(email)),
           GestureDetector(
             child: Container(
               decoration: BoxDecoration(
