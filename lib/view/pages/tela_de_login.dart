@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../../controller/firebase/auth.dart';
 import '../widgets/botao_full_width.dart';
 import '../widgets/caixa_de_texto.dart';
 
@@ -16,6 +17,9 @@ class TelaDeLogin extends StatefulWidget {
 }
 
 class _TelaDeLoginState extends State<TelaDeLogin> {
+  final TextEditingController email = TextEditingController();
+  final TextEditingController senha = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,10 +41,10 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
                 ),
               ),
-              CaixaDeTexto('E-mail', Icons.email, 24.0),
+              CaixaDeTexto('E-mail', Icons.email, 24.0, email),
               Padding(
                 padding: EdgeInsets.only(top: 32.0, bottom: 16.0),
-                child: CaixaDeTexto('Senha', Icons.lock, 24.0),
+                child: CaixaDeTexto('Senha', Icons.lock, 24.0, senha),
               ),
               Align(
                 alignment: Alignment.topRight,
@@ -58,7 +62,28 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
               SizedBox(
                 height: 40.0,
               ),
-              BotaoFullWidth('Entrar', context, 'telaInicial'),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 16),
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    LoginController().login(
+                        email: email.text, senha: senha.text, context: context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 194, 194, 194),
+                      padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                  child: Text(
+                    'Entrar',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 60.0,
               ),

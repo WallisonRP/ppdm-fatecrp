@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ppdm_fatecrp/view/widgets/perfil_menu.dart';
 
+import '../../controller/firebase/auth.dart';
+
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({super.key});
 
@@ -17,8 +19,7 @@ class MenuDrawer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(110),
                   child: GestureDetector(
                       onTap: () {
-                        Navigator.popUntil(
-                            context, ModalRoute.withName('login'));
+                        LoginController().sair(context);
                       },
                       child: Icon(
                         Icons.logout,

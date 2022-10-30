@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../controller/firebase/auth.dart';
 import '../widgets/botao_full_width.dart';
 import '../widgets/caixa_de_texto.dart';
 
@@ -13,9 +14,15 @@ class TelaDeCadastro extends StatefulWidget {
 }
 
 class _TelaDeCadastroState extends State<TelaDeCadastro> {
+  TextEditingController email = TextEditingController();
+  TextEditingController senha = TextEditingController();
+  TextEditingController nome = TextEditingController();
+  TextEditingController sobrenome = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Realizar Cadastro')),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.fromLTRB(32.0, 80.0, 32.0, 32.0),
@@ -31,46 +38,50 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
               SizedBox(
                 height: 80.0,
               ),
-              CaixaDeTexto('Nome', Icons.person, 26.0),
+              CaixaDeTexto('Nome', Icons.person, 26.0, nome),
               SizedBox(
                 height: 16.0,
               ),
-              CaixaDeTexto('Sobrenome', Icons.person, 26.0),
+              CaixaDeTexto('Sobrenome', Icons.person, 26.0, sobrenome),
               SizedBox(
                 height: 16.0,
               ),
-              CaixaDeTexto('E-mail', Icons.email, 24.0),
+              CaixaDeTexto('E-mail', Icons.email, 24.0, email),
               SizedBox(
                 height: 16.0,
               ),
-              CaixaDeTexto('Senha', Icons.lock, 25.0),
+              CaixaDeTexto('Senha', Icons.lock, 25.0, senha),
               SizedBox(
                 height: 80.0,
               ),
-              BotaoFullWidth('Cadastrar', context, 'telaInicial'),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 16),
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    LoginController().criarConta(
+                        email: email.text,
+                        senha: senha.text,
+                        context: context,
+                        nome: nome.text,
+                        sobrenome: sobrenome.text);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromARGB(255, 194, 194, 194),
+                      padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10))),
+                  child: Text(
+                    'Cadastrar',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 60.0,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 194, 194, 194),
-                    padding: EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 24.0),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14.0))),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(Icons.arrow_back, color: Colors.black),
-                    SizedBox(width: 8.0),
-                    Text(
-                      'Voltar',
-                      style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
               ),
             ],
           ),
