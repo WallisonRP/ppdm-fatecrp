@@ -15,6 +15,9 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
     backgroundColor: Colors.green,
   );
 
+    TextEditingController _identificacao = TextEditingController();
+  TextEditingController _representantes = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,17 +44,9 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
                 ),
               ),
-              CaixaDeTextoRedonda('Nome'),
+              CaixaDeTextoRedonda(label: 'Identificação', controller: _identificacao),
               SizedBox(height: 16),
-              CaixaDeTextoRedonda('Tipo de grupo'),
-              SizedBox(height: 16),
-              CaixaDeTextoRedonda('Representante(s)'),
-              SizedBox(height: 16),
-              CaixaDeTextoRedonda('Limitar quantidade de membros'),
-              SizedBox(height: 16),
-              CaixaDeTextoRedonda('E-mail'),
-              SizedBox(height: 16),
-              CaixaDeTextoRedonda('Descrição'),
+              CaixaDeTextoRedonda(label: 'Representante(s)', controller: _representantes),
               SizedBox(height: 64),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

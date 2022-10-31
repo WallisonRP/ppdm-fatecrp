@@ -17,6 +17,13 @@ class _TelaPerfilState extends State<TelaPerfil> {
     Map pessoa = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
 
+      TextEditingController _nome = TextEditingController();
+  TextEditingController _sobrenome = TextEditingController();
+  TextEditingController _dataNascimento = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _ra = TextEditingController();
+  TextEditingController _periodo = TextEditingController();
+
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(
@@ -44,31 +51,27 @@ class _TelaPerfilState extends State<TelaPerfil> {
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
-                child: CaixaDeTextoRedonda(pessoa['nome']),
+                child: CaixaDeTextoRedonda(label: pessoa['nome'], controller: _nome),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda(pessoa['sobrenome']),
+                child: CaixaDeTextoRedonda(label: pessoa['sobrenome'], controller: _sobrenome),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('01/01/2001'),
+                child: CaixaDeTextoRedonda(label: '01/01/2001', controller: _dataNascimento),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('(16) 98765-4321'),
+                child: CaixaDeTextoRedonda(label: 'fatec@fatec.sp.gov.br', controller: _email),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('fatec@fatec.sp.gov.br'),
+                child: CaixaDeTextoRedonda(label: '204048484848', controller: _ra),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('204048484848'),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child: CaixaDeTextoRedonda('Diurno'),
+                child: CaixaDeTextoRedonda(label: 'Diurno', controller: _periodo),
               ),
             ],
           ),

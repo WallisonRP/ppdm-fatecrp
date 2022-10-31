@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-CaixaDeTextoRedonda(label) {
+CaixaDeTextoRedonda({required String label, required TextEditingController controller}) {
   return TextField(
+    controller: controller,
     decoration: InputDecoration(
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),

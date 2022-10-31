@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
-// import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:ppdm_fatecrp/view/bottom_pages/tela_alunos.dart';
 import 'package:ppdm_fatecrp/view/bottom_pages/tela_turmas.dart';
 import 'package:ppdm_fatecrp/view/pages/main_navigation.dart';
@@ -20,7 +20,7 @@ import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
-  // await dotenv.load(fileName: '.env');
+  await dotenv.load(fileName: '.env');
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -39,7 +39,7 @@ void main() async {
       'cadastrarRosto': (context) => TelaCadastrarRosto(),
       'sobre': (context) => TelaSobre(),
       'verPerfil': (context) => TelaPerfil(),
-      'editarPerfil': (context) => EditarPerfilAluno(),
+      // 'editarPerfil': (context) => EditarPerfilAluno(),
       'verTurma': (context) => Turma(),
       'cadastrarTurma': (context) => TelaCadastrarTurma(),
       // 'telaAlunos': (context) => TelaAlunos(),

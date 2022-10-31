@@ -11,6 +11,12 @@ class EditarPerfilAluno extends StatefulWidget {
 }
 
 class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
+    TextEditingController _nome = TextEditingController();
+  TextEditingController _sobrenome = TextEditingController();
+  TextEditingController _dataNascimento = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _ra = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,17 +40,15 @@ class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
                     style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
                   ),
                 ),
-                CaixaDeTextoRedonda('Nome'),
+                CaixaDeTextoRedonda(label: 'Nome', controller: _nome),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('Sobrenome'),
+                CaixaDeTextoRedonda(label: 'Sobrenome', controller: _sobrenome),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('Data de Nascimento'),
+                CaixaDeTextoRedonda(label: 'Data de Nascimento', controller: _dataNascimento),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('Telefone'),
+                CaixaDeTextoRedonda(label: 'E-mail', controller: _email),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('E-mail'),
-                SizedBox(height: 16),
-                CaixaDeTextoRedonda('RA'),
+                CaixaDeTextoRedonda(label: 'RA', controller: _ra),
                 SizedBox(height: 64),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

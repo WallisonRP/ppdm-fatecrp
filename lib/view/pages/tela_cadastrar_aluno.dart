@@ -11,6 +11,32 @@ class TelaCadastrarAluno extends StatefulWidget {
 }
 
 class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
+  TextEditingController _nomeCompleto = TextEditingController();
+  TextEditingController _sobrenome = TextEditingController();
+  TextEditingController _dataNascimento = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _ra = TextEditingController();
+  TextEditingController _curso = TextEditingController();
+  TextEditingController _turma = TextEditingController();
+  TextEditingController _periodo = TextEditingController();
+
+  Map<String, String> aluno = {
+    "nome": "",
+    "sobrenome": "",
+    "dataNascimento": "",
+    "email": "",
+    "ra": "",
+    "curso": "",
+    "turma": "",
+    "periodo": ""
+  };
+
+  String? _selectedValue = 'ads';
+  String ads = 'Análise e Desenvolvimento de Sistemas';
+  String sb = 'Gestão de Negócios e Inovação';
+  String gni = 'Sistemas Biomédicos';
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,17 +63,31 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                     style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
                   ),
                 ),
-                CaixaDeTextoRedonda('Nome'),
+                TextFieldCadastro(label: 'Nome Completo', controller: _nomeCompleto, variavel: 'nome'),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('Sobrenome'),
+                TextFieldCadastro(label: 'Data de Nascimento', controller: _dataNascimento, variavel: 'dataNascimento'),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('Data de Nascimento'),
+                TextFieldCadastro(label: 'E-mail', controller: _email, variavel: 'email'),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('Telefone'),
+                TextFieldCadastro(label: 'RA', controller: _ra, variavel: 'ra'),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('E-mail'),
+                DropdownButton(
+                  value: _selectedValue,
+                  items: [
+                    
+                    DropdownMenuItem(child: Text(ads), value: ads,),
+                    DropdownMenuItem(child: Text(gni), value: gni,),
+                    DropdownMenuItem(child: Text(sb), value: sb,),
+                    ], onChanged: (selectedValue){
+                      _selectedValue = selectedValue;
+                      aluno['curso'] = selectedValue!;
+                    }),
+                TextFieldCadastro(label: 'Curso', controller: _curso, variavel: 'curso'),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda('RA'),
+                TextFieldCadastro(label: 'Turma', controller: _turma, variavel: 'turma'),
+                SizedBox(height: 16),
+                TextFieldCadastro(label: 'Período', controller: _periodo, variavel: 'periodo'),
+                
                 SizedBox(height: 64),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,7 +107,8 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, 'cadastrarRosto');
+                        // Navigator.pushNamed(context, 'cadastrarRosto');
+                        print(aluno);
                       },
                       child: Text(
                         'Proximo',
@@ -85,4 +126,25 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
           ),
         ));
   }
+
+
+  TextFieldCadastro({required String label, required TextEditingController controller, required String variavel}) {
+  return TextField(
+    controller: controller,
+    onChanged: (value){
+      aluno[variavel] = value;
+    },
+    decoration: InputDecoration(
+      enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: Colors.black)),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: BorderSide(color: Colors.black),
+      ),
+      labelStyle: TextStyle(color: Colors.black),
+      labelText: label,
+    ),
+  );
+}
 }
