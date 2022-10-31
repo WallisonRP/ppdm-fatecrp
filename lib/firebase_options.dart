@@ -50,21 +50,21 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static FirebaseOptions web = FirebaseOptions(
-    apiKey: Config.apiKeyWeb,
-    appId: Config.appIdWeb,
-    messagingSenderId: Config.messagingSenderIdWeb,
-    projectId: Config.projectIdWeb,
-    authDomain: Config.authDomainWeb,
-    storageBucket: Config.storageBucketWeb,
-    measurementId: Config.measurementIdWeb,
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCDaPhouyTgeu7m987QXUIEOhG1R066jwk',
+    appId: '1:530601307395:web:07e75101cb5c375bfecd36',
+    messagingSenderId: '530601307395',
+    projectId: 'ppdm-fc199',
+    authDomain: 'ppdm-fc199.firebaseapp.com',
+    storageBucket: 'ppdm-fc199.appspot.com',
+    measurementId: 'G-FX1KTGMZVW',
   );
 
-  static FirebaseOptions android = FirebaseOptions(
-    apiKey: Config.apiKey,
-    appId: Config.appId,
-    messagingSenderId: Config.messagingSenderId,
-    projectId: Config.projectId,
-    storageBucket: Config.storageBucket,
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAfbUBCJBv4e_Wfmj5aqLVk_i7oE7niY14',
+    appId: '1:530601307395:android:58cbdcd11afc4446fecd36',
+    messagingSenderId: '530601307395',
+    projectId: 'ppdm-fc199',
+    storageBucket: 'ppdm-fc199.appspot.com',
   );
 }
