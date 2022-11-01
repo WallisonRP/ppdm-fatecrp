@@ -27,6 +27,15 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
     "periodo": ""
   };
 
+  gravarDados() async {
+    await db
+        .collection("alunos")
+        .doc(aluno['curso'])
+        .collection(aluno['turma']!)
+        .doc(aluno['ra'])
+        .set(aluno);
+  }
+
   atribuirDadosAluno(String nome, String dataNascimento, String email,
       String ra, String curso, String turma, String periodo) {
     aluno['nome'] = nome;
@@ -119,15 +128,12 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(snackBar);
 
-                                    db
-                                        .collection("alunos")
-                                        .doc(aluno['curso'])
-                                        .collection(aluno['turma']!)
-                                        .doc(aluno['ra'])
-                                        .set(aluno);
-
-                                    Navigator.popUntil(context,
-                                        ModalRoute.withName('telaInicial'));
+                                    gravarDados();
+                                    Navigator.of(context)
+                                        .pushNamedAndRemoveUntil('telaInicial',
+                                            (Route<dynamic> route) => false);
+                                    // Navigator.popUntil(context,
+                                    //     ModalRoute.withName('telaInicial'));
                                   },
                                   child: Text("Confirmar"))
                             ],
@@ -150,13 +156,4 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
       ),
     );
   }
-
-  /*
-  db
-                            .collection("alunos")
-                            .doc(aluno['curso'])
-                            .collection(aluno['turma']!)
-                            .doc(aluno['ra'])
-                            .set(aluno);
-                            */
 }

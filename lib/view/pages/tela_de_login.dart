@@ -20,6 +20,15 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
   final TextEditingController email = TextEditingController();
   final TextEditingController senha = TextEditingController();
 
+  late bool _passwordVisible;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _passwordVisible = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +52,45 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
               ),
               CaixaDeTexto('E-mail', Icons.email, 24.0, email),
               Padding(
-                padding: EdgeInsets.only(top: 32.0, bottom: 16.0),
-                child: CaixaDeTexto('Senha', Icons.lock, 24.0, senha),
-              ),
+                  padding: EdgeInsets.only(top: 32.0, bottom: 16.0),
+                  child: TextField(
+                    controller: senha,
+                    style: TextStyle(fontSize: 16.0, color: Colors.black),
+                    // cursorHeight: 25,
+                    obscureText: !_passwordVisible,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.all(16),
+                      hintText: 'Senha',
+                      
+                      hintStyle: TextStyle(fontSize: 16.0, color: Colors.black),
+                      labelStyle: TextStyle(color: Colors.black),
+                      prefixIcon: Icon(
+                        Icons.lock,
+                        size: 24.0,
+                        color: Colors.black,
+                      ),
+                      suffixIcon: Padding(
+                        padding: const EdgeInsets.only(right: 6.0),
+                        child: IconButton(
+                          icon: Icon(
+                            _passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  )
+
+                  // CaixaDeTexto('Senha', Icons.lock, 24.0, senha),
+                  ),
               Align(
                 alignment: Alignment.topRight,
                 child: GestureDetector(
