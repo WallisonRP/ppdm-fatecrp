@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TelaCadastrarRosto extends StatefulWidget {
   const TelaCadastrarRosto({super.key});
@@ -9,23 +10,56 @@ class TelaCadastrarRosto extends StatefulWidget {
 }
 
 class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
   var snackBar = SnackBar(
     content: Text('Aluno cadastrado com sucesso!'),
     backgroundColor: Colors.green,
   );
 
+  Map<String, dynamic> aluno = {
+    "nome": "",
+    "dataNascimento": "",
+    "email": "",
+    "ra": "",
+    "curso": "",
+    "turma": "",
+    "periodo": ""
+  };
+
+  atribuirDadosAluno(String nome, String dataNascimento, String email,
+      String ra, String curso, String turma, String periodo) {
+    aluno['nome'] = nome;
+    aluno['dataNascimento'] = dataNascimento;
+    aluno['email'] = email;
+    aluno['ra'] = ra;
+    aluno['curso'] = curso;
+    aluno['turma'] = turma;
+    aluno['periodo'] = periodo;
+  }
+
   @override
   Widget build(BuildContext context) {
+    Map retorno = (ModalRoute.of(context)!.settings.arguments ??
+        <String, dynamic>{}) as Map;
+
+    atribuirDadosAluno(
+        retorno['nome'],
+        retorno['dataNascimento'],
+        retorno['email'],
+        retorno['ra'],
+        retorno['curso'],
+        retorno['turma'],
+        retorno['periodo']);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xffD9D9D9),
-        iconTheme: IconThemeData(
-            color: Colors.black
-          ),
+        iconTheme: IconThemeData(color: Colors.black),
         title: Text(
           'Cadastrar aluno',
           style: TextStyle(color: Colors.black),
-          ),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(16, 30, 16, 30),
@@ -84,6 +118,14 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                                   onPressed: () {
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(snackBar);
+
+                                    db
+                                        .collection("alunos")
+                                        .doc(aluno['curso'])
+                                        .collection(aluno['turma']!)
+                                        .doc(aluno['ra'])
+                                        .set(aluno);
+
                                     Navigator.popUntil(context,
                                         ModalRoute.withName('telaInicial'));
                                   },
@@ -108,4 +150,13 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
       ),
     );
   }
+
+  /*
+  db
+                            .collection("alunos")
+                            .doc(aluno['curso'])
+                            .collection(aluno['turma']!)
+                            .doc(aluno['ra'])
+                            .set(aluno);
+                            */
 }
