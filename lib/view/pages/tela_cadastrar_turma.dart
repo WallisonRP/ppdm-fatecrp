@@ -15,7 +15,7 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
     backgroundColor: Colors.green,
   );
 
-    TextEditingController _identificacao = TextEditingController();
+  TextEditingController _identificacao = TextEditingController();
   TextEditingController _representantes = TextEditingController();
 
   @override
@@ -23,13 +23,11 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xffD9D9D9),
-        iconTheme: IconThemeData(
-            color: Colors.black
-          ),
+        iconTheme: IconThemeData(color: Colors.black),
         title: Text(
           'Cadastrar turma',
           style: TextStyle(color: Colors.black),
-          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -44,9 +42,15 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
                 ),
               ),
-              CaixaDeTextoRedonda(label: 'Identificação', controller: _identificacao),
+              CaixaDeTextoRedonda(
+                  label: 'Identificação',
+                  controller: _identificacao,
+                  leitura: false),
               SizedBox(height: 16),
-              CaixaDeTextoRedonda(label: 'Representante(s)', controller: _representantes),
+              CaixaDeTextoRedonda(
+                  label: 'Representante(s)',
+                  controller: _representantes,
+                  leitura: false),
               SizedBox(height: 64),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

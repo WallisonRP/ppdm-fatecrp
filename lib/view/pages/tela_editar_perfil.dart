@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
 import 'package:flutter/material.dart';
 
 import '../widgets/caixa_de_texto_redonda.dart';
@@ -40,15 +42,15 @@ class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
                     style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
                   ),
                 ),
-                CaixaDeTextoRedonda(label: 'Nome', controller: _nome),
+                CaixaDeTextoRedonda(label: 'Nome', controller: _nome, leitura: false),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda(label: 'Sobrenome', controller: _sobrenome),
+                CaixaDeTextoRedonda(label: 'Sobrenome', controller: _sobrenome, leitura: false),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda(label: 'Data de Nascimento', controller: _dataNascimento),
+                CaixaDeTextoRedonda(label: 'Data de Nascimento', controller: _dataNascimento, leitura: false),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda(label: 'E-mail', controller: _email),
+                CaixaDeTextoRedonda(label: 'E-mail', controller: _email, leitura: false),
                 SizedBox(height: 16),
-                CaixaDeTextoRedonda(label: 'RA', controller: _ra),
+                CaixaDeTextoRedonda(label: 'RA', controller: _ra, leitura: false),
                 SizedBox(height: 64),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

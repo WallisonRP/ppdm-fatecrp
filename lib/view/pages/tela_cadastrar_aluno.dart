@@ -33,22 +33,22 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
 
   List<String> cursos = [
     'Análise e Desenvolvimento de Sistemas',
-    'Gestão de Negócios e Inovação',
-    'Sistemas Biomédicos'
+    // 'Gestão de Negócios e Inovação',
+    // 'Sistemas Biomédicos'
   ];
 
   List<String> turmas = [
-    '1º Semestre',
-    '2º Semestre',
-    '3º Semestre',
+    // '1º Semestre',
+    // '2º Semestre',
+    // '3º Semestre',
     '4º Semestre',
-    '5º Semestre',
-    '6º Semestre',
+    // '5º Semestre',
+    // '6º Semestre',
   ];
 
   List<String> periodos = [
     'Manhã',
-    'Noite',
+    // 'Noite',
   ];
 
   String? _selectedValue = 'ads';
