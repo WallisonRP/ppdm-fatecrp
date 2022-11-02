@@ -3,11 +3,25 @@
 import 'package:flutter/material.dart';
 
 Aluno(pessoa) {
-  return Container(
+  return ListTile(
+      title: Text(pessoa['nome']),
+      subtitle: Text(pessoa['email']),
+      trailing: Icon(Icons.keyboard_arrow_right),
+      leading: CircleAvatar(
+        backgroundColor: Colors.blue,
+        child: Text(pessoa['nome'][0]),
+      ));
+}
+
+
+
+/*
+Container(
     child: ListTile(
+      visualDensity: VisualDensity(vertical: 2),
       minVerticalPadding: 20,
-      title: Text('${pessoa["nome"]} ${pessoa["sobrenome"]}'),
-      subtitle: Text('(16) 98765-4321'),
+      title: Text('${pessoa["nome"]}'),
+      subtitle: Text('${pessoa["email"]}'),
       leading: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10), color: Color(0xffD9D9D9)),
@@ -31,5 +45,6 @@ Aluno(pessoa) {
             BorderSide(width: 1.0, color: Color.fromARGB(255, 224, 224, 224)),
       ),
     ),
-  );
-}
+  )
+
+ */
