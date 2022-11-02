@@ -13,18 +13,26 @@ class TelaPerfil extends StatefulWidget {
 }
 
 class _TelaPerfilState extends State<TelaPerfil> {
+  TextEditingController _nome = TextEditingController();
+  TextEditingController _dataNascimento = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _ra = TextEditingController();
+  TextEditingController _periodo = TextEditingController();
+  TextEditingController _curso = TextEditingController();
+  TextEditingController _turma = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Map pessoa = (ModalRoute.of(context)?.settings.arguments ??
         <String, dynamic>{}) as Map;
 
-    TextEditingController _nome = TextEditingController();
-    TextEditingController _sobrenome = TextEditingController();
-    TextEditingController _dataNascimento = TextEditingController();
-    TextEditingController _email = TextEditingController();
-    TextEditingController _ra = TextEditingController();
-    TextEditingController _periodo = TextEditingController();
-
+    _nome.text = pessoa['nome'];
+    _dataNascimento.text = pessoa['dataNascimento'];
+    _email.text = pessoa['email'];
+    _ra.text = pessoa['ra'];
+    _curso.text = pessoa['curso'];
+    _turma.text = pessoa['turma'];
+    _periodo.text = pessoa['periodo'];
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
@@ -63,28 +71,39 @@ class _TelaPerfilState extends State<TelaPerfil> {
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
                 child: CaixaDeTextoRedonda(
-                    label: pessoa['nome'], controller: _nome),
+                    label: 'Nome', controller: _nome, leitura: true),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: CaixaDeTextoRedonda(
-                    label: pessoa['dataNascimento'],
-                    controller: _dataNascimento),
+                    label: 'Data de Nascimento',
+                    controller: _dataNascimento,
+                    leitura: true),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: CaixaDeTextoRedonda(
-                    label: pessoa['email'], controller: _email),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                child:
-                    CaixaDeTextoRedonda(label: pessoa['ra'], controller: _ra),
+                    label: 'Email', controller: _email, leitura: true),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
                 child: CaixaDeTextoRedonda(
-                    label: pessoa['periodo'], controller: _periodo),
+                    label: 'RA', controller: _ra, leitura: true),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda(
+                    label: 'Curso', controller: _curso, leitura: true),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda(
+                    label: 'Turma', controller: _turma, leitura: true),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                child: CaixaDeTextoRedonda(
+                    label: 'Periodo', controller: _periodo, leitura: true),
               ),
             ],
           ),
