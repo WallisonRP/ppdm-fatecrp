@@ -29,7 +29,7 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
 
   gravarDados() async {
     await db
-        .collection("alunos")
+        .collection('alunos')
         .doc(aluno['curso'])
         .collection(aluno['turma']!)
         .doc(aluno['ra'])
@@ -129,6 +129,7 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                                         .showSnackBar(snackBar);
 
                                     gravarDados();
+
                                     Navigator.of(context)
                                         .pushNamedAndRemoveUntil('telaInicial',
                                             (Route<dynamic> route) => false);

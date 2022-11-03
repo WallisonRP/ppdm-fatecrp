@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_string_interpolations, sort_child_properties_last
 
 import 'package:flutter/material.dart';
 
@@ -189,19 +189,20 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                       );
                     }).toList(),
                     onChanged: (dynamic value) {
-                      if (value == turmas[0]) {
-                        aluno['turma'] = '1semestre';
-                      } else if (value == turmas[1]) {
-                        aluno['turma'] = '2semestre';
-                      } else if (value == turmas[2]) {
-                        aluno['turma'] = '3semestre';
-                      } else if (value == turmas[3]) {
-                        aluno['turma'] = '4semestre';
-                      } else if (value == turmas[4]) {
-                        aluno['turma'] = '5semestre';
-                      } else if (value == turmas[5]) {
-                        aluno['turma'] = '6semestre';
-                      }
+                      // if (value == turmas[0]) {
+                      //   aluno['turma'] = '1semestre';
+                      // } else if (value == turmas[1]) {
+                      //   aluno['turma'] = '2semestre';
+                      // } else if (value == turmas[2]) {
+                      //   aluno['turma'] = '3semestre';
+                      // } else if (value == turmas[3]) {
+                      //   aluno['turma'] = '4semestre';
+                      // } else if (value == turmas[4]) {
+                      //   aluno['turma'] = '5semestre';
+                      // } else if (value == turmas[5]) {
+                      //   aluno['turma'] = '6semestre';
+                      // }
+                      aluno['turma'] = '4semestre';
                       setState(() {
                         turmaSelecionada = value;
                       });

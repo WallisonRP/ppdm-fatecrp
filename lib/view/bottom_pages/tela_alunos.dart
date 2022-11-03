@@ -118,7 +118,7 @@ class _TelaAlunosState extends State<TelaAlunos> {
                   return Text("Erro ao recuperar dados");
                 }
                 if (querySnapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
+                  return Center(child: CircularProgressIndicator());
                 } else {
                   final list = querySnapshot.data!.docs;
 
@@ -156,7 +156,7 @@ class _TelaAlunosState extends State<TelaAlunos> {
         mini: true,
         child: Icon(Icons.add),
         onPressed: () {
-          // Navigator.pushNamed(context, 'cadastrarAluno');
+          Navigator.pushNamed(context, 'cadastrarAluno');
         },
       ),
     );
