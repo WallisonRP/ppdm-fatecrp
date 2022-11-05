@@ -8,15 +8,29 @@ import '../../controller/custom_search_delegate.dart';
 import '../../controller/firebase/firestore.dart';
 import '../../model/aluno.dart';
 
-class TelaAlunos extends StatefulWidget {
-  const TelaAlunos({super.key});
+class TelaAlunosPorTurma extends StatefulWidget {
+  const TelaAlunosPorTurma({super.key});
 
   @override
-  State<TelaAlunos> createState() => _TelaAlunosState();
+  State<TelaAlunosPorTurma> createState() => _TelaAlunosPorTurmaState();
 }
 
-class _TelaAlunosState extends State<TelaAlunos> {
+class _TelaAlunosPorTurmaState extends State<TelaAlunosPorTurma> {
   final db = FirebaseFirestore.instance;
+
+  atribuirDadosAluno(String nome, String dataNascimento, String email,
+      String ra, String curso, String turma, String periodo) {
+    Map<String, dynamic> aluno = {};
+    aluno['nome'] = nome;
+    aluno['dataNascimento'] = dataNascimento;
+    aluno['email'] = email;
+    aluno['ra'] = ra;
+    aluno['curso'] = curso;
+    aluno['turma'] = turma;
+    aluno['periodo'] = periodo;
+
+    return aluno;
+  }
 
   @override
   void initState() {
@@ -25,16 +39,18 @@ class _TelaAlunosState extends State<TelaAlunos> {
 
   @override
   Widget build(BuildContext context) {
+    Map retorno = (ModalRoute.of(context)!.settings.arguments ??
+        <String, dynamic>{}) as Map;
     var listaAlunos = db
         .collection('alunos')
         .doc('cursos')
         .collection('ads')
-        .doc('4semestre')
+        .doc(retorno['turma'])
         .collection('alunos')
         .snapshots();
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         iconTheme: IconThemeData(color: Colors.black, opacity: 1),
         backgroundColor: Color(0xffD9D9D9),
         title: Text(
@@ -121,68 +137,4 @@ class _TelaAlunosState extends State<TelaAlunos> {
       ),
     );
   }
-
-  /*
-  Column(
-        children: [
-          Container(
-            padding: EdgeInsets.fromLTRB(16, 10, 0, 10),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color.fromARGB(255, 224, 224, 224)),
-              ),
-            ),
-            child: Row(
-              children: [
-                Text("Ordem alfabética"),
-                Icon(Icons.keyboard_arrow_down)
-              ],
-            ),
-          ),
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-        stream: listaAlunos,
-        builder: ((BuildContext context,
-            AsyncSnapshot<QuerySnapshot> querySnapshot) {
-          if (querySnapshot.hasError) {
-            return Text("Erro ao recuperar dados");
-          } else if (querySnapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
-          } else {
-            final list = querySnapshot.data!.docs;
-
-            return ListView.separated(
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  child: Aluno(list[index], context),
-                  onTap: () {
-                    Navigator.pushNamed(context, 'verPerfil',
-                        arguments: list[index]);
-                  },
-                );
-              },
-              itemCount: list.length,
-              separatorBuilder: (context, index) {
-                // <-- SEE HERE
-                return Divider();
-              },
-            );
-          }
-        }),
-      ),
-          )
-        ],
-      )
-
-
-      return ListView.builder(
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(list[index]['nome']),
-                );
-              },
-              itemCount: list.length,
-            );
-   */
 }

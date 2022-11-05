@@ -28,10 +28,19 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
   };
 
   gravarDados() async {
+    // await db
+    //     .collection('alunos')
+    //     .doc(aluno['curso'])
+    //     .collection(aluno['turma']!)
+    //     .doc(aluno['ra'])
+    //     .set(aluno);
+
     await db
         .collection('alunos')
-        .doc(aluno['curso'])
-        .collection(aluno['turma']!)
+        .doc('cursos')
+        .collection('ads')
+        .doc(aluno['turma'])
+        .collection('alunos')
         .doc(aluno['ra'])
         .set(aluno);
   }

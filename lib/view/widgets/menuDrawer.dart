@@ -30,7 +30,15 @@ class MenuDrawer extends StatelessWidget {
                 ),
               ],
               currentAccountPicture: CircleAvatar(
-                child: Image.asset('lib/assets/images/profile.png'),
+                backgroundColor: Colors.grey,
+                radius: 30,
+                child: Text(
+                  nome[0],
+                  style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 96, 94, 94)),
+                ),
               ),
               accountName: Text(nome),
               accountEmail: Text(email)),

@@ -88,8 +88,13 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
                                     onPressed: () {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(snackBar);
-                                      Navigator.popUntil(context,
-                                          ModalRoute.withName('telaInicial'));
+
+                                      Navigator.of(context)
+                                          .pushNamedAndRemoveUntil(
+                                              'telaInicial',
+                                              (Route<dynamic> route) => false);
+                                      // Navigator.popUntil(context,
+                                      //     ModalRoute.withName('telaInicial'));
                                     },
                                     child: Text("Confirmar"))
                               ],

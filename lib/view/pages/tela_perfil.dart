@@ -33,6 +33,35 @@ class _TelaPerfilState extends State<TelaPerfil> {
     _curso.text = pessoa['curso'];
     _turma.text = pessoa['turma'];
     _periodo.text = pessoa['periodo'];
+
+    if (_curso.text == 'ads') {
+      _curso.text = 'Análise e Desenvolvimento de Sistemas';
+    } else if (_curso.text == 'gni') {
+      _curso.text = 'Gestão de Negócios e Inovação';
+    } else if (_curso.text == 'sbm') {
+      _curso.text = 'Sistemas Biomédicos';
+    }
+
+    if (_turma.text == '1semestre') {
+      _turma.text = '1º Semestre';
+    } else if (_turma.text == '2semestre') {
+      _turma.text = '2º Semestre';
+    } else if (_turma.text == '3semestre') {
+      _turma.text = '3º Semestre';
+    } else if (_turma.text == '4semestre') {
+      _turma.text = '4º Semestre';
+    } else if (_turma.text == '5semestre') {
+      _turma.text = '5º Semestre';
+    } else if (_turma.text == '6semestre') {
+      _turma.text = '6º Semestre';
+    }
+
+    if (_periodo.text == 'manha') {
+      _periodo.text = 'Manhã';
+    } else if (_periodo.text == 'noite') {
+      _periodo.text = 'Noite';
+    }
+
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),

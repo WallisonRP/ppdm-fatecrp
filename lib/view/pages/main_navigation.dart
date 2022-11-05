@@ -7,7 +7,7 @@ import '../widgets/menuDrawer.dart';
 import '../bottom_pages/tela_alunos.dart';
 import '../bottom_pages/tela_inicial.dart';
 import '../bottom_pages/tela_menu.dart';
-import '../bottom_pages/tela_turmas.dart';
+import '../bottom_pages/tela_cursos.dart';
 
 class MenuTelaInicial extends StatefulWidget {
   const MenuTelaInicial({super.key});
@@ -43,7 +43,7 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
     List<Widget> _bodies = [
       TelaInicial(),
       TelaAlunos(),
-      TelaTurmas(),
+      TelaCursos(),
       TelaMenu(),
     ];
 

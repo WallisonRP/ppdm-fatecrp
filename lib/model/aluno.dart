@@ -8,6 +8,7 @@ Aluno(pessoa) {
       subtitle: Text(pessoa['email']),
       trailing: Icon(Icons.keyboard_arrow_right),
       leading: CircleAvatar(
+        radius: 22,
         backgroundColor: Colors.blue,
         child: Text(pessoa['nome'][0]),
       ));
