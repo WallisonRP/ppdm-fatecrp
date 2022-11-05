@@ -64,12 +64,11 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black),
+          iconTheme: IconThemeData(color: Colors.white),
           title: Text(
             'Cadastrar aluno',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
-          backgroundColor: Color(0xffD9D9D9),
         ),
         body: SingleChildScrollView(
           child: Container(

@@ -72,11 +72,10 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffD9D9D9),
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           'Cadastrar aluno',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Container(

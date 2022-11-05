@@ -60,12 +60,11 @@ class _TelaTurmasState extends State<TelaTurmas> {
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: false,
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Color(0xffD9D9D9),
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           // 'Página inicial',
           'Turmas',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Column(

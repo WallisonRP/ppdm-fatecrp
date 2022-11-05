@@ -29,12 +29,11 @@ class _TurmaState extends State<Turma> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-            color: Colors.black
+            color: Colors.white
           ),
-        backgroundColor: Color(0xffD9D9D9),
         title: Text(
           '4° Semestre',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Column(

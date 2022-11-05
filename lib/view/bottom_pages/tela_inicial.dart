@@ -19,12 +19,11 @@ class _TelaInicialState extends State<TelaInicial> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Color(0xffD9D9D9),
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           // 'Página inicial',
           'Página inicial',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Column(

@@ -24,10 +24,9 @@ class _EditarPerfilAlunoState extends State<EditarPerfilAluno> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-            color: Colors.black
+            color: Colors.white
           ),
         title: Text('Editar Perfil'),
-        backgroundColor: Color(0xffD9D9D9)
       ),
       body: SingleChildScrollView(
           child: Container(

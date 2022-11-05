@@ -51,12 +51,11 @@ class _TelaAlunosPorTurmaState extends State<TelaAlunosPorTurma> {
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: false,
-        iconTheme: IconThemeData(color: Colors.black, opacity: 1),
-        backgroundColor: Color(0xffD9D9D9),
+        iconTheme: IconThemeData(color: Colors.white, opacity: 1),
         title: Text(
           // 'Página inicial',
           'Alunos',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
         actions: [
           IconButton(

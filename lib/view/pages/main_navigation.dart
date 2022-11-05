@@ -61,8 +61,8 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
             _onItemTapped(index);
           },
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Color(0xffD9D9D9),
-          fixedColor: Colors.blue,
+          backgroundColor: Colors.blue,
+          fixedColor: Colors.white,
           unselectedItemColor: Colors.black,
           items: [
             BottomNavigationBarItem(label: 'Inicio', icon: Icon(Icons.home)),
