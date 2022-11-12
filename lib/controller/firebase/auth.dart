@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +59,15 @@ class LoginController {
           .createUserWithEmailAndPassword(email: email, password: senha);
 
       if (userCredential != null) {
+        //Cadastrar nome de usuário para exibição no app
         userCredential.user!.updateDisplayName('$nome $sobrenome');
+
+
+        //Cadastrar usuário no banco de dados
+        FirebaseFirestore.instance.collection('usuarios').add({
+          "uid": userCredential.user!.uid.toString(),
+          "nome": nome,
+        });
         Navigator.pop(context);
         // Navigator.pushAndRemoveUntil(
         //     context,

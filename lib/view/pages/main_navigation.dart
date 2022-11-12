@@ -61,14 +61,26 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
             _onItemTapped(index);
           },
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.blue,
-          fixedColor: Colors.white,
+          backgroundColor: Colors.white,
+          fixedColor: Color(0xff2196F3),
           unselectedItemColor: Colors.black,
           items: [
-            BottomNavigationBarItem(label: 'Inicio', icon: Icon(Icons.home)),
-            BottomNavigationBarItem(label: 'Alunos', icon: Icon(Icons.person)),
-            BottomNavigationBarItem(label: 'Turmas', icon: Icon(Icons.group)),
-            BottomNavigationBarItem(label: 'Menu', icon: Icon(Icons.menu))
+            BottomNavigationBarItem(
+                label: 'Inicio',
+                icon: Icon(Icons.home_outlined),
+                activeIcon: Icon(Icons.home)),
+            BottomNavigationBarItem(
+                label: 'Alunos',
+                icon: Icon(Icons.person_outlined),
+                activeIcon: Icon(Icons.person)),
+            BottomNavigationBarItem(
+                label: 'Turmas',
+                icon: Icon(Icons.group_outlined),
+                activeIcon: Icon(Icons.group)),
+            BottomNavigationBarItem(
+                label: 'Menu',
+                icon: Icon(Icons.menu_outlined),
+                activeIcon: Icon(Icons.menu))
           ]),
     );
   }

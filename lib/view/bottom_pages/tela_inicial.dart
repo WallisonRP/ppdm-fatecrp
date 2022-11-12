@@ -43,13 +43,16 @@ class _TelaInicialState extends State<TelaInicial> {
                       Text(
                         "Seja bem vindo(a)!",
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                            fontSize: 26, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 4,
                       ),
                       Text(
                         "Aqui você encontra as principais ferramentas do aplicativo.",
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w500),
+                            fontSize: 14, fontWeight: FontWeight.w500),
                       )
                     ],
                   ),
@@ -82,12 +85,12 @@ class _TelaInicialState extends State<TelaInicial> {
                 crossAxisSpacing: 16,
                 children: [
                   GestureDetector(
-                      child: CardItens('Add Aluno', Icons.person_add, context),
+                      child: CardItens('Novo Aluno', Icons.person_add, context),
                       onTap: () {
                         Navigator.pushNamed(context, 'cadastrarAluno');
                       }),
                   GestureDetector(
-                      child: CardItens('Add Turma', Icons.group_add, context),
+                      child: CardItens('Nova Turma', Icons.group_add, context),
                       onTap: () {
                         Navigator.pushNamed(context, 'cadastrarTurma');
                       }),
