@@ -60,10 +60,9 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
                     },
                     child: Text(
                       'Cancelar',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xffD9D9D9),
                       padding: EdgeInsets.fromLTRB(26, 18, 26, 18),
                     ),
                   ),
@@ -102,10 +101,9 @@ class _TelaCadastrarTurmaState extends State<TelaCadastrarTurma> {
                     },
                     child: Text(
                       'Criar',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.white),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xffD9D9D9),
                       padding: EdgeInsets.fromLTRB(26, 18, 26, 18),
                     ),
                   ),

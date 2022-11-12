@@ -264,10 +264,9 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                       },
                       child: Text(
                         'Cancelar',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xffD9D9D9),
                         padding: EdgeInsets.fromLTRB(26, 18, 26, 18),
                       ),
                     ),
@@ -278,10 +277,9 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                       },
                       child: Text(
                         'Proximo',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xffD9D9D9),
                         padding: EdgeInsets.fromLTRB(26, 18, 26, 18),
                       ),
                     ),

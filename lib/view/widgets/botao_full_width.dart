@@ -9,14 +9,13 @@ BotaoFullWidth(rotulo, context, rota) {
         Navigator.pushNamed(context, rota);
       },
       style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromARGB(255, 194, 194, 194),
           padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       child: Text(
         rotulo,
         style: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
+            fontSize: 18, fontWeight: FontWeight.w500, color: Colors.white),
       ),
     ),
   );

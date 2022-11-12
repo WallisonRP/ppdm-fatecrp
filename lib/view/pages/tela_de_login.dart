@@ -34,17 +34,22 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.fromLTRB(32.0, 80.0, 32.0, 32.0),
+          margin: EdgeInsets.fromLTRB(32.0, 50.0, 32.0, 32.0),
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Image.asset(
+                'lib/assets/images/login.png',
+                width: 500,
+                height: 250,
+              ),
               Text(
                 "Seja bem vindo(a)!",
                 style: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 40.0, bottom: 80.0),
+                padding: const EdgeInsets.only(top: 20.0, bottom: 50.0),
                 child: Text(
                   "Faça seu login para ter acesso ao aplicativo",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
@@ -62,7 +67,6 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                       isDense: true,
                       contentPadding: EdgeInsets.all(16),
                       hintText: 'Senha',
-                      
                       hintStyle: TextStyle(fontSize: 16.0, color: Colors.black),
                       labelStyle: TextStyle(color: Colors.black),
                       prefixIcon: Icon(
@@ -116,7 +120,6 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                         email: email.text, senha: senha.text, context: context);
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 194, 194, 194),
                       padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -125,7 +128,7 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
-                        color: Colors.black),
+                        color: Colors.white),
                   ),
                 ),
               ),

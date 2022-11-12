@@ -67,7 +67,6 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                         sobrenome: sobrenome.text);
                   },
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 194, 194, 194),
                       padding: EdgeInsets.fromLTRB(0, 18, 0, 18),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
@@ -76,7 +75,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
-                        color: Colors.black),
+                        color: Colors.white),
                   ),
                 ),
               ),

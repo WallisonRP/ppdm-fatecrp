@@ -25,7 +25,7 @@ class MenuDrawer extends StatelessWidget {
                       },
                       child: Icon(
                         Icons.logout,
-                        color: Color.fromARGB(255, 179, 39, 29),
+                        color: Color.fromARGB(255, 241, 59, 46),
                       )),
                 ),
               ],
@@ -33,7 +33,7 @@ class MenuDrawer extends StatelessWidget {
                 backgroundColor: Color.fromARGB(255, 109, 185, 247),
                 radius: 30,
                 child: Text(
-                  nome[0],
+                  nome[0].toUpperCase(),
                   style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.w500,
