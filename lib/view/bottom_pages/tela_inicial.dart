@@ -43,7 +43,7 @@ class _TelaInicialState extends State<TelaInicial> {
                       Text(
                         "Seja bem vindo(a)!",
                         style: TextStyle(
-                            fontSize: 26, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         height: 4,
@@ -60,8 +60,8 @@ class _TelaInicialState extends State<TelaInicial> {
                 Expanded(
                   child: Image.asset(
                     'lib/assets/images/home_image.png',
-                    width: 156,
-                    height: 156,
+                    width: 135,
+                    height: 135,
                   ),
                 )
               ],

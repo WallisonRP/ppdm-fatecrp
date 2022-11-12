@@ -42,14 +42,14 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
               Image.asset(
                 'lib/assets/images/login.png',
                 width: 500,
-                height: 250,
+                height: 230,
               ),
               Text(
                 "Seja bem vindo(a)!",
                 style: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20.0, bottom: 50.0),
+                padding: const EdgeInsets.only(top: 16.0, bottom: 50.0),
                 child: Text(
                   "Faça seu login para ter acesso ao aplicativo",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
@@ -57,7 +57,7 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
               ),
               CaixaDeTexto('E-mail', Icons.email, 24.0, email),
               Padding(
-                  padding: EdgeInsets.only(top: 32.0, bottom: 16.0),
+                  padding: EdgeInsets.only(top: 26.0, bottom: 16.0),
                   child: TextField(
                     controller: senha,
                     style: TextStyle(fontSize: 16.0, color: Colors.black),
@@ -133,7 +133,7 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                 ),
               ),
               SizedBox(
-                height: 60.0,
+                height: 40.0,
               ),
               Text(
                 'Novo(a) por aqui? Cadastre-se abaixo',
