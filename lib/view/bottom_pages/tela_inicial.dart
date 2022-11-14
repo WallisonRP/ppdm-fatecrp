@@ -31,7 +31,14 @@ class _TelaInicialState extends State<TelaInicial> {
         children: [
           Container(
             padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-            decoration: BoxDecoration(color: Color(0xffEFEFEF)),
+            decoration: BoxDecoration(color: Color(0xffEFEFEF), boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(.1),
+                spreadRadius: 1,
+                blurRadius: 2,
+                offset: Offset(0, 0), // changes position of shadow
+              ),
+            ]),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -60,15 +67,15 @@ class _TelaInicialState extends State<TelaInicial> {
                 Expanded(
                   child: Image.asset(
                     'lib/assets/images/home_image.png',
-                    width: 135,
-                    height: 135,
+                    width: 150,
+                    height: 150,
                   ),
                 )
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 40, left: 16, bottom: 16),
+            padding: const EdgeInsets.only(top: 40, left: 16, bottom: 8),
             child: Text(
               "Principais opções",
               style: TextStyle(
