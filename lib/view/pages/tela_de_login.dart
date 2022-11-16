@@ -8,6 +8,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../../controller/firebase/auth.dart';
 import '../widgets/botao_full_width.dart';
 import '../widgets/caixa_de_texto.dart';
+import '../widgets/util.dart';
 
 class TelaDeLogin extends StatefulWidget {
   const TelaDeLogin({super.key});
@@ -36,7 +37,6 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
         child: Container(
           margin: EdgeInsets.fromLTRB(32.0, 50.0, 32.0, 32.0),
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
@@ -61,7 +61,6 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                   child: TextField(
                     controller: senha,
                     style: TextStyle(fontSize: 16.0, color: Colors.black),
-                    // cursorHeight: 25,
                     obscureText: !_passwordVisible,
                     decoration: InputDecoration(
                       isDense: true,
@@ -97,16 +96,85 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
                   ),
               Align(
                 alignment: Alignment.topRight,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    "Esqueceu seu senha ?",
-                    style: TextStyle(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromARGB(255, 15, 49, 241)),
+                child: TextButton(
+                    child: Text(
+                      "Esqueceu a senha?",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.blueAccent.shade700,
+                      ),
+                    ),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(
+                            'Informe seu e-mail',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.blueGrey.shade700,
+                            ),
+                          ),
+                          titlePadding: EdgeInsets.all(20),
+                          content: Container(
+                            width: 350,
+                            height: 80,
+                            child: Column(
+                              children: [
+                                campoTexto('E-mail', Icons.email, email),
+                              ],
+                            ),
+                          ),
+                          backgroundColor: Colors.blueGrey.shade50,
+                          actionsPadding: EdgeInsets.fromLTRB(0, 0, 20, 20),
+                          actions: [
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                minimumSize: Size(120, 50),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                'cancelar',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.blueAccent.shade700,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: Colors.blueAccent.shade700,
+                                minimumSize: Size(120, 50),
+                              ),
+                              onPressed: () async {
+                                if (email.text.isNotEmpty) {
+                                  LoginController()
+                                      .esqueceuSenha(email.text);
+                                  sucesso(
+                                      context, 'E-mail enviado com sucesso.');
+                                } else {
+                                  erro(context,
+                                      'Informe o e-mail para recuperar a senha.');
+                                }
+
+                                Navigator.pop(context);
+                                email.clear();
+                              },
+                              child: Text(
+                                'enviar',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
-                ),
               ),
               SizedBox(
                 height: 40.0,
