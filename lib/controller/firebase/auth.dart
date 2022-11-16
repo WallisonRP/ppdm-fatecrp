@@ -94,5 +94,7 @@ class LoginController {
         context, MaterialPageRoute(builder: (context) => CheckUserLogin())));
   }
 
-  void esqueceuSenha(String email) {}
+  void esqueceuSenha(String email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
 }
