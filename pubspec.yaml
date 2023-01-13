@@ -43,6 +43,9 @@ dependencies:
   google_ml_kit: ^0.13.0
   get_it: ^7.2.0
   image: ^3.2.2
+  sqflite: ^2.2.2
+  path: ^1.8.0
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:

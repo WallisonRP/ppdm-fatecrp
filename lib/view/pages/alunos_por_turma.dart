@@ -102,7 +102,15 @@ class _TelaAlunosPorTurmaState extends State<TelaAlunosPorTurma> {
                   return ListView.separated(
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        child: Aluno(list[index]),
+                        child: ListTile(
+                            title: Text(list[index]['nome']),
+                            subtitle: Text(list[index]['email']),
+                            trailing: Icon(Icons.keyboard_arrow_right),
+                            leading: CircleAvatar(
+                              radius: 22,
+                              backgroundColor: Colors.blue,
+                              child: Text(list[index]['nome'][0]),
+                            )),
                         onTap: () {
                           Navigator.pushNamed(context, 'verPerfil', arguments: {
                             "nome": list[index]['nome'],

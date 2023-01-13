@@ -42,7 +42,7 @@ class CustomSearchDelegate extends SearchDelegate<String> {
       itemCount: pessoas.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          child: Aluno(pessoas[index]),
+          child: Container(),//Aluno(pessoas[index]),
           onTap: () {},
         );
       },
