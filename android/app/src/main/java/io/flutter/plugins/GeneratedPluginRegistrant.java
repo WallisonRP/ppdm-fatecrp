@@ -115,5 +115,10 @@ public final class GeneratedPluginRegistrant {
     } catch(Exception e) {
       Log.e(TAG, "Error registering plugin sqflite, com.tekartik.sqflite.SqflitePlugin", e);
     }
+    try {
+      flutterEngine.getPlugins().add(new com.tfliteflutter.tflite_flutter_plugin.TfliteFlutterPlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin tflite_flutter, com.tfliteflutter.tflite_flutter_plugin.TfliteFlutterPlugin", e);
+    }
   }
 }
