@@ -54,7 +54,7 @@ class CameraService {
   }
 
   Future<XFile?> takePicture() async {
-    assert(_cameraController != null, 'Camera controller not initialized');
+    assert(_cameraController != null, 'Controlador de camera não inicializado');
     await _cameraController?.stopImageStream();
     XFile? file = await _cameraController?.takePicture();
     _imagePath = file?.path;
@@ -62,9 +62,9 @@ class CameraService {
   }
 
   Size getImageSize() {
-    assert(_cameraController != null, 'Camera controller not initialized');
+    assert(_cameraController != null, 'Controlador de camera não inicializado');
     assert(
-        _cameraController!.value.previewSize != null, 'Preview size is null');
+        _cameraController!.value.previewSize != null, 'Tamanho de previsualização é nulo');
     return Size(
       _cameraController!.value.previewSize!.height,
       _cameraController!.value.previewSize!.width,

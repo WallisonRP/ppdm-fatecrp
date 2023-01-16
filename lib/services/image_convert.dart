@@ -8,11 +8,11 @@ imglib.Image convertToImage(CameraImage image) {
     } else if (image.format.group == ImageFormatGroup.bgra8888) {
       return _convertBGRA8888(image);
     }
-    throw Exception('Image format not supported');
+    throw Exception('Formato de imagem não suportado');
   } catch (e) {
-    print("ERROR:" + e.toString());
+    print("Erro:" + e.toString());
   }
-  throw Exception('Image format not supported');
+  throw Exception('Formato de imagem não suportado');
 }
 
 imglib.Image _convertBGRA8888(CameraImage image) {
