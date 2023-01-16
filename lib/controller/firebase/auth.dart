@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../check_user.dart';
-import '../../view/pages/main_navigation.dart';
+import '../../view/pages/home.dart';
 
 class LoginController {
   final firebaseAuth = FirebaseAuth.instance;

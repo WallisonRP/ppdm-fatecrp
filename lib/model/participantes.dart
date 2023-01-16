@@ -14,7 +14,7 @@ class Pessoa extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String caminho = 'lib/assets/images/${foto}.jpg';
+    String caminho = 'assets/images/${foto}.jpg';
     String emailFinal = '${email}@fatec.sp.gov.br';
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,

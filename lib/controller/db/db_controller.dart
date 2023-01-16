@@ -40,15 +40,15 @@ class DatabaseHelper {
           ''');
   }
 
-  Future<int> insert(Aluno aluno) async {
+  Future<int> insert(Aluno1 aluno) async {
     Database db = await instance.database;
     return await db.insert(table, aluno.toMap());
   }
 
-  Future<List<Aluno>> queryAllUsers() async {
+  Future<List<Aluno1>> queryAllUsers() async {
     Database db = await instance.database;
     List<Map<String, dynamic>> alunos = await db.query(table);
-    return alunos.map((u) => Aluno.fromMap(u)).toList();
+    return alunos.map((u) => Aluno1.fromMap(u)).toList();
   }
 
   //Para testes

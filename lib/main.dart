@@ -1,20 +1,21 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:ppdm_fatecrp/services_locator.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:ppdm_fatecrp/view/bottom_pages/tela_alunos.dart';
-import 'package:ppdm_fatecrp/view/bottom_pages/tela_cursos.dart';
+import 'package:ppdm_fatecrp/view/bottom_pages/alunos.dart';
+import 'package:ppdm_fatecrp/view/bottom_pages/cursos.dart';
 import 'package:ppdm_fatecrp/view/pages/alunos_por_turma.dart';
-import 'package:ppdm_fatecrp/view/pages/main_navigation.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_cadastrar_aluno.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_cadastrar_rosto.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_cadastrar_turma.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_cadastro.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_de_login.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_editar_perfil.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_perfil.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_sobre.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_turmas.dart';
+import 'package:ppdm_fatecrp/view/pages/home.dart';
+import 'package:ppdm_fatecrp/view/pages/cadastrar_aluno.dart';
+import 'package:ppdm_fatecrp/view/pages/tela_aviso.dart';
+import 'package:ppdm_fatecrp/view/pages/cadastrar_turma.dart';
+import 'package:ppdm_fatecrp/view/pages/cadastro_aluno.dart';
+import 'package:ppdm_fatecrp/view/pages/login.dart';
+import 'package:ppdm_fatecrp/view/pages/editar_perfil.dart';
+import 'package:ppdm_fatecrp/view/pages/perfil.dart';
+import 'package:ppdm_fatecrp/view/pages/sobre.dart';
+import 'package:ppdm_fatecrp/view/bottom_pages/turmas.dart';
 import 'package:ppdm_fatecrp/view/pages/turma.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'check_user.dart';
@@ -29,6 +30,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  setupServices();
   runApp(MaterialApp(
     // home: TelaSobre(),
     initialRoute: 'checkUser',

@@ -66,7 +66,7 @@ class _TelaInicialState extends State<TelaInicial> {
                 ),
                 Expanded(
                   child: Image.asset(
-                    'lib/assets/images/home_image.png',
+                    'assets/images/home_image.png',
                     width: 150,
                     height: 150,
                   ),

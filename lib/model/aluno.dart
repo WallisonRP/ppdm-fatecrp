@@ -1,19 +1,21 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, sort_child_properties_last, prefer_const_constructors
 import 'dart:convert';
 
-class Aluno {
+import 'package:flutter/material.dart';
+
+class Aluno1 {
   String nome;
   String ra;
   List modelData;
 
-  Aluno({
+  Aluno1({
     required this.nome,
     required this.ra,
     required this.modelData,
   });
 
-  static Aluno fromMap(Map<String, dynamic> user) {
-    return Aluno(
+  static Aluno1 fromMap(Map<String, dynamic> user) {
+    return Aluno1(
       nome: user['user'],
       ra: user['ra'],
       modelData: jsonDecode(user['model_data']),
@@ -29,6 +31,17 @@ class Aluno {
   }
 }
 
+Aluno(pessoa) {
+  return ListTile(
+      title: Text(pessoa['nome']),
+      subtitle: Text(pessoa['email']),
+      trailing: Icon(Icons.keyboard_arrow_right),
+      leading: CircleAvatar(
+        radius: 22,
+        backgroundColor: Colors.blue,
+        child: Text(pessoa['nome'][0]),
+      ));
+}
 
 
 

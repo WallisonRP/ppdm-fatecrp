@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ppdm_fatecrp/view/pages/main_navigation.dart';
-import 'package:ppdm_fatecrp/view/pages/tela_de_login.dart';
+import 'package:ppdm_fatecrp/view/pages/home.dart';
+import 'package:ppdm_fatecrp/view/pages/login.dart';
 
 class CheckUserLogin extends StatefulWidget {
   const CheckUserLogin({super.key});
