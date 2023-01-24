@@ -1,18 +1,19 @@
 import 'dart:io';
 
-import 'package:path/path.dart';
 import 'package:ppdm_fatecrp/model/aluno.dart';
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DatabaseHelper {
-  static const _databaseName = "MyDatabase.db";
-  static const _databaseVersion = 1;
+  static final _databaseName = "MyDatabase.db";
+  static final _databaseVersion = 1;
 
-  static const table = 'alunos';
-  static const columnRa = 'id';
-  static const columnUser = 'user';
-  static const columnModelData = 'model_data';
+  static final table = 'users';
+  static final columnId = 'id';
+  static final columnUser = 'name';
+  static final columnPassword = 'ra';
+  static final columnModelData = 'model_data';
 
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -33,25 +34,25 @@ class DatabaseHelper {
   Future _onCreate(Database db, int version) async {
     await db.execute('''
           CREATE TABLE $table (
-            $columnRa INTEGER PRIMARY KEY,
+            $columnId INTEGER PRIMARY KEY,
             $columnUser TEXT NOT NULL,
+            $columnPassword TEXT NOT NULL,
             $columnModelData TEXT NOT NULL
           )
           ''');
   }
 
-  Future<int> insert(Aluno1 aluno) async {
+  Future<int> insert(Student user) async {
     Database db = await instance.database;
-    return await db.insert(table, aluno.toMap());
+    return await db.insert(table, user.toMap());
   }
 
-  Future<List<Aluno1>> queryAllUsers() async {
+  Future<List<Student>> queryAllStudents() async {
     Database db = await instance.database;
-    List<Map<String, dynamic>> alunos = await db.query(table);
-    return alunos.map((u) => Aluno1.fromMap(u)).toList();
+    List<Map<String, dynamic>> users = await db.query(table);
+    return users.map((student) => Student.fromMap(student)).toList();
   }
 
-  //Para testes
   Future<int> deleteAll() async {
     Database db = await instance.database;
     return await db.delete(table);

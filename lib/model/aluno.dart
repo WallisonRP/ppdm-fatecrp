@@ -3,28 +3,28 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-class Aluno1 {
-  String nome;
+class Student {
+  String name;
   String ra;
   List modelData;
 
-  Aluno1({
-    required this.nome,
+  Student({
+    required this.name,
     required this.ra,
     required this.modelData,
   });
 
-  static Aluno1 fromMap(Map<String, dynamic> user) {
-    return Aluno1(
-      nome: user['user'],
-      ra: user['ra'],
-      modelData: jsonDecode(user['model_data']),
+  static Student fromMap(Map<String, dynamic> student) {
+    return new Student(
+      name: student['name'],
+      ra: student['ra'],
+      modelData: jsonDecode(student['model_data']),
     );
   }
 
   toMap() {
     return {
-      'nome': nome,
+      'name': name,
       'ra': ra,
       'model_data': jsonEncode(modelData),
     };

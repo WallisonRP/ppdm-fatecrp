@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:camera/camera.dart';
-// import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 
 class CameraService {
@@ -54,17 +53,23 @@ class CameraService {
   }
 
   Future<XFile?> takePicture() async {
-    assert(_cameraController != null, 'Controlador de camera não inicializado');
-    await _cameraController?.stopImageStream();
-    XFile? file = await _cameraController?.takePicture();
-    _imagePath = file?.path;
-    return file;
+    try {
+      assert(
+          _cameraController != null, 'Controlador da camera não foi iniciado');
+      await _cameraController?.stopImageStream();
+      XFile? file = await _cameraController?.takePicture();
+      _imagePath = file?.path;
+      return file;
+    } catch (e) {
+      print('Erro: $e');
+    }
   }
 
   Size getImageSize() {
-    assert(_cameraController != null, 'Controlador de camera não inicializado');
     assert(
-        _cameraController!.value.previewSize != null, 'Tamanho de previsualização é nulo');
+        _cameraController != null, 'O controlador da câmera não foi iniciado');
+    assert(_cameraController!.value.previewSize != null,
+        'O tamanho da visualização é nulo');
     return Size(
       _cameraController!.value.previewSize!.height,
       _cameraController!.value.previewSize!.width,

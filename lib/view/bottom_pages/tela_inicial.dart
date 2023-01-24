@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../widgets/card_itens.dart';
 
+// import 'package:ppdm_fatecrp/services/camera_service.dart';
+import 'package:ppdm_fatecrp/services/face_detector_service.dart';
+import 'package:ppdm_fatecrp/services/ml_service.dart';
+import 'package:ppdm_fatecrp/services_locator.dart';
+
 class TelaInicial extends StatefulWidget {
   const TelaInicial({super.key});
 
@@ -12,6 +17,19 @@ class TelaInicial extends StatefulWidget {
 }
 
 class _TelaInicialState extends State<TelaInicial> {
+  MLService _mlService = locator<MLService>();
+  FaceDetectorService _mlKitService = locator<FaceDetectorService>();
+  // CameraService _cameraService = locator<CameraService>();
+  bool loading = false;
+
+  _initializeServices() async {
+    setState(() => loading = true);
+    // await _cameraService.initialize();
+    await _mlService.initialize();
+    _mlKitService.initialize();
+    setState(() => loading = false);
+  }
+
   @override
   Widget build(BuildContext context) {
     var largura = MediaQuery.of(context).size.width;
@@ -95,6 +113,42 @@ class _TelaInicialState extends State<TelaInicial> {
                       child: CardItens('Novo Aluno', Icons.person_add, context),
                       onTap: () {
                         Navigator.pushNamed(context, 'cadastrarAluno');
+                      }),
+                  GestureDetector(
+                      child: CardItens('Registrar', Icons.search, context),
+                      onTap: () {
+                        // _initializeServices();
+
+                        showDialog(
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                title: Text('Atenção!'),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        'Você está entrando no modo de chamada'),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('cancelar')),
+                                  ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          padding: EdgeInsets.all(16)),
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context, 'registrar');
+                                      },
+                                      child: Text("Confirmar")),
+                                ],
+                              );
+                            });
                       }),
                   GestureDetector(
                       child: CardItens('Nova Turma', Icons.group_add, context),

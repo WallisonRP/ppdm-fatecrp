@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:ppdm_fatecrp/services/camera_service.dart';
 
 class TelaCadastrarRosto extends StatefulWidget {
   const TelaCadastrarRosto({super.key});
@@ -10,12 +10,21 @@ class TelaCadastrarRosto extends StatefulWidget {
 }
 
 class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
-  FirebaseFirestore db = FirebaseFirestore.instance;
 
-  var snackBar = SnackBar(
-    content: Text('Aluno cadastrado com sucesso!'),
-    backgroundColor: Colors.green,
-  );
+  // _initializeServices() async {
+  //   setState(() => loading = true);
+  //   // await _cameraService.initialize();
+  //   await _mlService.initialize();
+  //   _mlKitService.initialize();
+  //   setState(() => loading = false);
+  // }
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   _initializeServices();
+  // }
 
   Map<String, dynamic> aluno = {
     "nome": "",
@@ -26,24 +35,6 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
     "turma": "",
     "periodo": ""
   };
-
-  gravarDados() async {
-    // await db
-    //     .collection('alunos')
-    //     .doc(aluno['curso'])
-    //     .collection(aluno['turma']!)
-    //     .doc(aluno['ra'])
-    //     .set(aluno);
-
-    await db
-        .collection('alunos')
-        .doc('cursos')
-        .collection('ads')
-        .doc(aluno['turma'])
-        .collection('alunos')
-        .doc(aluno['ra'])
-        .set(aluno);
-  }
 
   atribuirDadosAluno(String nome, String dataNascimento, String email,
       String ra, String curso, String turma, String periodo) {
@@ -120,28 +111,35 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                         context: context,
                         builder: (_) {
                           return AlertDialog(
-                            title: Text('Adicionar Aluno'),
-                            content: Text('Confirmar cadastro de aluno?'),
+                            title: Text('Siga as instruções abaixo:'),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('• Alinhe a camera ao seu rosto'),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text('Verifique o enquadramento'),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text('Alinhe a camera ao seu rosto'),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text('Alinhe a camera ao seu rosto'),
+                              ],
+                            ),
                             actions: [
-                              TextButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text('Cancelar')),
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       padding: EdgeInsets.all(16)),
                                   onPressed: () {
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(snackBar);
-
-                                    gravarDados();
-
-                                    Navigator.of(context)
-                                        .pushNamedAndRemoveUntil('telaInicial',
-                                            (Route<dynamic> route) => false);
-                                    // Navigator.popUntil(context,
-                                    //     ModalRoute.withName('telaInicial'));
+                                    Navigator.pushNamed(context, 'faceRegister',
+                                        arguments: aluno);
+                                    // Navigator.pushNamed(
+                                    //     context, 'faceRegister');
                                   },
                                   child: Text("Confirmar"))
                             ],

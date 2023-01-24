@@ -9,6 +9,10 @@ import '../bottom_pages/tela_inicial.dart';
 import '../bottom_pages/menu.dart';
 import '../bottom_pages/cursos.dart';
 
+import 'package:ppdm_fatecrp/services/face_detector_service.dart';
+import 'package:ppdm_fatecrp/services/ml_service.dart';
+import 'package:ppdm_fatecrp/services_locator.dart';
+
 class MenuTelaInicial extends StatefulWidget {
   const MenuTelaInicial({super.key});
 
@@ -17,6 +21,14 @@ class MenuTelaInicial extends StatefulWidget {
 }
 
 class _MenuTelaInicialState extends State<MenuTelaInicial> {
+  MLService _mlService = locator<MLService>();
+  FaceDetectorService _mlKitService = locator<FaceDetectorService>();
+
+  _initializeServices() async {
+    await _mlService.initialize();
+    _mlKitService.initialize();
+  }
+
   final firebaseAuth = FirebaseAuth.instance;
   String nome = '';
   String email = '';
@@ -27,6 +39,7 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _initializeServices();
     getUser();
   }
 
@@ -74,7 +87,7 @@ class _MenuTelaInicialState extends State<MenuTelaInicial> {
                 icon: Icon(Icons.person_outlined),
                 activeIcon: Icon(Icons.person)),
             BottomNavigationBarItem(
-                label: 'Cursos',
+                label: 'Turmas',
                 icon: Icon(Icons.group_outlined),
                 activeIcon: Icon(Icons.group)),
             BottomNavigationBarItem(

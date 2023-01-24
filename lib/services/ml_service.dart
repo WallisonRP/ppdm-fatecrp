@@ -2,12 +2,10 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:camera/camera.dart';
-// import 'package:shape_test/pages/db/databse_helper.dart';
-// import 'package:shape_test/pages/models/user.model.dart';
-// import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
-import 'package:ppdm_fatecrp/services/image_convert.dart';
-// import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
+import 'package:ppdm_fatecrp/controller/db/db_controller.dart';
+import 'package:ppdm_fatecrp/model/aluno.dart';
+import 'package:ppdm_fatecrp/services/image_converter.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:image/image.dart' as imglib;
 
@@ -43,14 +41,14 @@ class MLService {
       _interpreter = await Interpreter.fromAsset('mobilefacenet.tflite',
           options: interpreterOptions);
     } catch (e) {
-      print('Falha ao carregar modelo.');
+      print('Falha ao carregar modelo');
       print(e);
     }
   }
 
   void setCurrentPrediction(CameraImage cameraImage, Face? face) {
     if (_interpreter == null) throw Exception('O interpretador é nulo');
-    if (face == null) throw Exception('Sem faces encontradas');
+    if (face == null) throw Exception('A face é nula');
     List input = _preProcess(cameraImage, face);
 
     input = input.reshape([1, 112, 112, 3]);
@@ -60,6 +58,10 @@ class MLService {
     output = output.reshape([192]);
 
     _predictedData = List.from(output);
+  }
+
+  Future<Student?> predict() async {
+    return _searchResult(_predictedData);
   }
 
   List _preProcess(CameraImage image, Face faceDetected) {
@@ -100,6 +102,38 @@ class MLService {
       }
     }
     return convertedBytes.buffer.asFloat32List();
+  }
+
+  Future<Student?> _searchResult(List predictedData) async {
+    DatabaseHelper _dbHelper = DatabaseHelper.instance;
+
+    List<Student> users = await _dbHelper.queryAllStudents();
+    double minDist = 999;
+    double currDist = 0.0;
+    Student? predictedResult;
+
+    for (Student s in users) {
+      currDist = _euclideanDistance(s.modelData, predictedData);
+      if (currDist <= threshold && currDist < minDist) {
+        minDist = currDist;
+        predictedResult = s;
+      }
+    }
+    return predictedResult;
+  }
+
+  double _euclideanDistance(List? e1, List? e2) {
+    if (e1 == null || e2 == null) throw Exception("O argumento é nulo");
+
+    double sum = 0.0;
+    for (int i = 0; i < e1.length; i++) {
+      sum += pow((e1[i] - e2[i]), 2);
+    }
+    return sqrt(sum);
+  }
+
+  void setPredictedData(value) {
+    _predictedData = value;
   }
 
   dispose() {}
