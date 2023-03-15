@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ppdm_fatecrp/services/camera_service.dart';
+import 'package:ppdm_fatecrp/services/face_detector_service.dart';
+import 'package:ppdm_fatecrp/services/ml_service.dart';
+import 'package:ppdm_fatecrp/services_locator.dart';
 
 // import 'package:ppdm_fatecrp/services/camera_service.dart';
 
@@ -10,14 +14,14 @@ class TelaCadastrarRosto extends StatefulWidget {
 }
 
 class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
+  FaceDetectorService _faceDetectorService = locator<FaceDetectorService>();
+  CameraService _cameraService = locator<CameraService>();
+  MLService _mlService = locator<MLService>();
 
-  // _initializeServices() async {
-  //   setState(() => loading = true);
-  //   // await _cameraService.initialize();
-  //   await _mlService.initialize();
-  //   _mlKitService.initialize();
-  //   setState(() => loading = false);
-  // }
+  _initializeServices() async {
+    await _cameraService.initialize();
+    await _mlService.initialize();
+  }
 
   // @override
   // void initState() {
@@ -107,6 +111,7 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    _initializeServices();
                     showDialog(
                         context: context,
                         builder: (_) {
@@ -141,7 +146,13 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                                     // Navigator.pushNamed(
                                     //     context, 'faceRegister');
                                   },
-                                  child: Text("Confirmar"))
+                                  child: Text("Confirmar")),
+                              TextButton(
+                                  onPressed: (() {
+                                    Navigator.pop(context);
+                                    _cameraService.dispose();
+                                  }),
+                                  child: Text("Cancelar"))
                             ],
                           );
                         });

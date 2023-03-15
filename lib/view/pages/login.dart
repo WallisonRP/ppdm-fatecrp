@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../controller/firebase/auth.dart';
 import '../widgets/botao_full_width.dart';
@@ -23,10 +24,20 @@ class _TelaDeLoginState extends State<TelaDeLogin> {
 
   late bool _passwordVisible;
 
+  testeCameraPermission() async {
+    if (await Permission.location.request().isGranted) {
+      // Either the permission was already granted before or the user just granted it.
+      print("Location Permission is granted");
+    } else {
+      print("Location Permission is denied.");
+    }
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    testeCameraPermission();
     _passwordVisible = false;
   }
 

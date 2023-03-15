@@ -64,7 +64,7 @@ class _FaceRegisterState extends State<FaceRegister> {
   MLService _mlService = locator<MLService>();
 
   _start() async {
-    await _cameraService.initialize();
+    // await _cameraService.initialize();
     setState(() => _initializing = true);
     await Future.delayed(Duration(milliseconds: 1100));
     setState(() => _initializing = false);
