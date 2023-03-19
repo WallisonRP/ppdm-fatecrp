@@ -37,11 +37,11 @@ class _AuthActionButtonState extends State<AuthActionButton> {
     DatabaseHelper _databaseHelper = DatabaseHelper.instance;
     List predictedData = _mlService.predictedData;
     String nome = widget.aluno["nome"];
-    String ra = widget.aluno["ra"];
+    int ra = int.parse(widget.aluno["ra"]);
     widget.aluno["model_data"] = predictedData;
     Student studentToSave = Student(
+      id: ra,
       name: nome,
-      ra: ra,
       modelData: predictedData,
     );
 

@@ -12,7 +12,6 @@ class DatabaseHelper {
   static final table = 'users';
   static final columnId = 'id';
   static final columnUser = 'name';
-  static final columnPassword = 'ra';
   static final columnModelData = 'model_data';
 
   DatabaseHelper._privateConstructor();
@@ -36,15 +35,19 @@ class DatabaseHelper {
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
             $columnUser TEXT NOT NULL,
-            $columnPassword TEXT NOT NULL,
             $columnModelData TEXT NOT NULL
           )
           ''');
   }
 
-  Future<int> insert(Student user) async {
+  Future<int> insert(Student student) async {
     Database db = await instance.database;
-    return await db.insert(table, user.toMap());
+    return await db.insert(table, student.toMap());
+  }
+
+  Future<int> insertAllStudents(List<Student> students ) async {
+    Database db = await instance.database;
+    return 1;
   }
 
   Future<List<Student>> queryAllStudents() async {

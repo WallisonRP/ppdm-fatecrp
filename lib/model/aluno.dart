@@ -5,27 +5,27 @@ import 'package:flutter/material.dart';
 
 class Student {
   String name;
-  String ra;
+  int id;
   List modelData;
 
   Student({
+    required this.id,
     required this.name,
-    required this.ra,
     required this.modelData,
   });
 
   static Student fromMap(Map<String, dynamic> student) {
     return new Student(
+      id: student['id'],
       name: student['name'],
-      ra: student['ra'],
       modelData: jsonDecode(student['model_data']),
     );
   }
 
   toMap() {
     return {
+      'id': id,
       'name': name,
-      'ra': ra,
       'model_data': jsonEncode(modelData),
     };
   }

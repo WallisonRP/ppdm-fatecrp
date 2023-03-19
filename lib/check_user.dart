@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ppdm_fatecrp/view/pages/home.dart';
 import 'package:ppdm_fatecrp/view/pages/login.dart';
+
+
 
 class CheckUserLogin extends StatefulWidget {
   const CheckUserLogin({super.key});
@@ -14,6 +17,31 @@ class CheckUserLogin extends StatefulWidget {
 
 class _CheckUserLoginState extends State<CheckUserLogin> {
   StreamSubscription? streamSubscription;
+    final db = FirebaseFirestore.instance;
+
+
+CollectionReference _collectionRef =
+    FirebaseFirestore.instance.collection("alunos").doc('cursos').collection('ads').doc('4semestre').collection('alunos');
+
+Future<void> getData() async {
+    // Get docs from collection reference
+    QuerySnapshot querySnapshot = await _collectionRef.get();
+
+    // Get data from docs and convert map to List
+    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+
+    print(allData);
+}
+
+  getStudents() async {
+    db.collection("alunos").doc('cursos').collection('ads').doc('4semestre').collection('alunos').get().then(
+      (res) {
+        print("Successfully completed");
+        print(res);
+      },
+      onError: (e) => print("Error completing: $e"),
+    );
+  }
 
     @override
   void initState() {
@@ -29,6 +57,8 @@ class _CheckUserLoginState extends State<CheckUserLogin> {
             context, MaterialPageRoute(builder: ((context) => MenuTelaInicial())));
       }
     });
+
+    getData();
   }
 
     @override

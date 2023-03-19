@@ -38,7 +38,7 @@ class _FaceRegisterState extends State<FaceRegister> {
     "nome": "",
     "dataNascimento": "",
     "email": "",
-    "ra": "",
+    "ra": 0,
     "curso": "",
     "turma": "",
     "periodo": "",
