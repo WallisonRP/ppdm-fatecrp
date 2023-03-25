@@ -42,6 +42,7 @@ class DatabaseHelper {
 
   Future<int> insert(Student student) async {
     Database db = await instance.database;
+    
     return await db.insert(table, student.toMap());
   }
 

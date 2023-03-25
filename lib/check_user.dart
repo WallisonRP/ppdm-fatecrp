@@ -22,6 +22,10 @@ class _CheckUserLoginState extends State<CheckUserLogin> {
 
 CollectionReference _collectionRef =
     FirebaseFirestore.instance.collection("alunos").doc('cursos').collection('ads').doc('4semestre').collection('alunos');
+    var aux;
+    List allStudents = [];
+
+    
 
 Future<void> getData() async {
     // Get docs from collection reference
@@ -29,8 +33,22 @@ Future<void> getData() async {
 
     // Get data from docs and convert map to List
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    // final allNames = querySnapshot.docs.map((doc) => doc.get('nome'));
+    // final allIDs = querySnapshot.docs.map((doc) => doc.get('ra'));
+    // final allModels = querySnapshot.docs.map((doc) => doc.get('model_data'));
+    final te = querySnapshot.docs.map((doc) => doc.data());
 
-    print(allData);
+    // print(allData[0]['nome']);
+      // teste = allData[0];
+    for(int i = 0; i < allData.length; i++) {
+      aux = allData[i];
+      allStudents.add({
+        'nome': aux['nome'],
+        'id': aux['ra']
+      });
+    }
+
+    print(allStudents);
 }
 
   getStudents() async {
