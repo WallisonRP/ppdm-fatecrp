@@ -51,6 +51,27 @@ class DatabaseHelper {
     return 1;
   }
 
+  Future<int> queryStudentByID(int id) async {
+    Database db = await instance.database;
+        List<String> columnsToSelect = [
+      DatabaseHelper.columnId,
+      DatabaseHelper.columnUser,
+      DatabaseHelper.columnModelData,
+    ];
+    int rowId = id;
+    String whereString = '${DatabaseHelper.columnId} = ?';
+    List<dynamic> whereArguments = [rowId];
+List<Map> result = await db.query(
+        DatabaseHelper.table,
+        columns: columnsToSelect,
+        where: whereString,
+        whereArgs: whereArguments);
+
+        // result.forEach((row) => print(row));
+        // print(result.length);
+    return result.length;
+  }
+
   Future<List<Student>> queryAllStudents() async {
     Database db = await instance.database;
     List<Map<String, dynamic>> users = await db.query(table);
