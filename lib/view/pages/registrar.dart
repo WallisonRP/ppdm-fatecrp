@@ -45,10 +45,16 @@ class RegistrarState extends State<Registrar> {
     super.dispose();
   }
 
+  Future<void> _attendanceList({student}) async {
+    // nome_disciplina
+    
+    print(student);
+  }
+
   Future _start() async {
     setState(() => _isInitializing = true);
-    await Future.delayed(Duration(milliseconds: 1000));
     await _cameraService.initialize();
+    await Future.delayed(Duration(milliseconds: 1000));
     setState(() => _isInitializing = false);
     _frameFaces();
   }
@@ -57,7 +63,7 @@ class RegistrarState extends State<Registrar> {
     bool processing = false;
     _cameraService.cameraController!
         .startImageStream((CameraImage image) async {
-      if (processing) return; // prevents unnecessary overprocessing.
+      if (processing) return; // previne superprocessamento desnecessário
       processing = true;
       await _predictFacesFromImage(image: image);
       processing = false;
@@ -65,7 +71,7 @@ class RegistrarState extends State<Registrar> {
   }
 
   Future<void> _predictFacesFromImage({@required CameraImage? image}) async {
-    assert(image != null, 'A imagem é nula');
+    assert(image != null, 'A imagem é nula!');
     await _faceDetectorService.detectFacesFromImage(image!);
     if (_faceDetectorService.faceDetected) {
       _mlService.setCurrentPrediction(image, _faceDetectorService.faces[0]);
@@ -98,6 +104,7 @@ class RegistrarState extends State<Registrar> {
     await takePicture();
     if (_faceDetectorService.faceDetected) {
       Student? student = await _mlService.predict();
+      _attendanceList(student: student);
       var bottomSheetController = scaffoldKey.currentState!
           .showBottomSheet((context) => signInSheet(student: student));
       bottomSheetController.closed.whenComplete(_reload);
@@ -113,9 +120,12 @@ class RegistrarState extends State<Registrar> {
 
   @override
   Widget build(BuildContext context) {
+    Map turma = ModalRoute.of(context)!.settings.arguments as Map;
+    String nome_disciplina = turma['nome_disciplina'];
     Widget header = CameraHeader("Chamada", onBackPressed: _onBackPressed);
     Widget body = getBodyWidget();
     Widget? fab;
+
     if (!_isPictureTaken) fab = AuthButton(onTap: onTap);
 
     return Scaffold(

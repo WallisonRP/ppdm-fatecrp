@@ -15,6 +15,7 @@ class SignInSheet extends StatelessWidget {
     Navigator.pushReplacementNamed(context, 'telaInicial');
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,6 +37,7 @@ class SignInSheet extends StatelessWidget {
                 ButtonIcon(
                   text: 'Continuar chamada',
                   onPressed: () async {
+                    await CameraService().clearImagePath();
                     Navigator.pop(context);
                   },
                   icon: Icon(

@@ -13,6 +13,10 @@ class CameraService {
   String? _imagePath;
   String? get imagePath => _imagePath;
 
+  Future<void> clearImagePath() async {
+    _imagePath = '';
+  }
+
   Future<void> initialize() async {
     if (_cameraController != null) return;
     CameraDescription description = await _getCameraDescription();

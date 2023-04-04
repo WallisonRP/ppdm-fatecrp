@@ -8,6 +8,7 @@ import 'package:ppdm_fatecrp/view/bottom_pages/alunos.dart';
 import 'package:ppdm_fatecrp/view/bottom_pages/cursos.dart';
 import 'package:ppdm_fatecrp/view/pages/alunos_por_turma.dart';
 import 'package:ppdm_fatecrp/view/pages/checkout.dart';
+import 'package:ppdm_fatecrp/view/pages/disciplinas.dart';
 import 'package:ppdm_fatecrp/view/pages/face_register.dart';
 import 'package:ppdm_fatecrp/view/pages/home.dart';
 import 'package:ppdm_fatecrp/view/pages/cadastrar_aluno.dart';
@@ -57,6 +58,7 @@ void main() async {
       'faceRegister': (context) => FaceRegister(),
       'checkout': (context) => Checkout(),
       'registrar': (context) => Registrar(),
+      'disciplinas': (context) => Disciplinas(),
     },
     debugShowCheckedModeBanner: false,
   ));

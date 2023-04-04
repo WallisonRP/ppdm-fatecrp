@@ -14,6 +14,10 @@ class DatabaseHelper {
   static final columnUser = 'name';
   static final columnModelData = 'model_data';
 
+  static final attendanceTable = 'attendance';
+
+
+
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
 
@@ -42,18 +46,13 @@ class DatabaseHelper {
 
   Future<int> insert(Student student) async {
     Database db = await instance.database;
-    
-    return await db.insert(table, student.toMap());
-  }
 
-  Future<int> insertAllStudents(List<Student> students ) async {
-    Database db = await instance.database;
-    return 1;
+    return await db.insert(table, student.toMap());
   }
 
   Future<int> queryStudentByID(int id) async {
     Database db = await instance.database;
-        List<String> columnsToSelect = [
+    List<String> columnsToSelect = [
       DatabaseHelper.columnId,
       DatabaseHelper.columnUser,
       DatabaseHelper.columnModelData,
@@ -61,14 +60,11 @@ class DatabaseHelper {
     int rowId = id;
     String whereString = '${DatabaseHelper.columnId} = ?';
     List<dynamic> whereArguments = [rowId];
-List<Map> result = await db.query(
-        DatabaseHelper.table,
+    List<Map> result = await db.query(DatabaseHelper.table,
         columns: columnsToSelect,
         where: whereString,
         whereArgs: whereArguments);
 
-        // result.forEach((row) => print(row));
-        // print(result.length);
     return result.length;
   }
 

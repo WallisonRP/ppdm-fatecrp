@@ -118,37 +118,38 @@ class _TelaInicialState extends State<TelaInicial> {
                       child: CardItens('Registrar', Icons.search, context),
                       onTap: () {
                         // _initializeServices();
-
-                        showDialog(
-                            context: context,
-                            builder: (_) {
-                              return AlertDialog(
-                                title: Text('Atenção!'),
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        'Você está entrando no modo de chamada'),
-                                  ],
-                                ),
-                                actions: [
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text('cancelar')),
-                                  ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          padding: EdgeInsets.all(16)),
-                                      onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, 'registrar');
-                                      },
-                                      child: Text("Confirmar")),
-                                ],
-                              );
-                            });
+                        Navigator.pushNamed(
+                                            context, 'disciplinas');
+                        // showDialog(
+                        //     context: context,
+                        //     builder: (_) {
+                        //       return AlertDialog(
+                        //         title: Text('Atenção!'),
+                        //         content: Column(
+                        //           mainAxisSize: MainAxisSize.min,
+                        //           crossAxisAlignment: CrossAxisAlignment.start,
+                        //           children: [
+                        //             Text(
+                        //                 'Você está entrando no modo de chamada'),
+                        //           ],
+                        //         ),
+                        //         actions: [
+                        //           TextButton(
+                        //               onPressed: () {
+                        //                 Navigator.pop(context);
+                        //               },
+                        //               child: Text('cancelar')),
+                        //           ElevatedButton(
+                        //               style: ElevatedButton.styleFrom(
+                        //                   padding: EdgeInsets.all(16)),
+                        //               onPressed: () {
+                        //                 Navigator.pushNamed(
+                        //                     context, 'registrar');
+                        //               },
+                        //               child: Text("Confirmar")),
+                        //         ],
+                        //       );
+                        //     });
                       }),
                   GestureDetector(
                       child: CardItens('Nova Turma', Icons.group_add, context),

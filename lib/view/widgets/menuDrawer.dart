@@ -51,7 +51,24 @@ class MenuDrawer extends StatelessWidget {
               )),
               padding: EdgeInsets.fromLTRB(16, 22, 0, 25),
               child: Text(
-                'Exportar dados',
+                'Disciplinas',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              ),
+            ),
+            onTap: () {
+              Navigator.pushNamed(context, 'disciplinas');
+
+            },
+          ),GestureDetector(
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border(
+                // top: BorderSide(width: 1.0, color: Colors.lightBlue.shade600),
+                bottom: BorderSide(width: 0.1),
+              )),
+              padding: EdgeInsets.fromLTRB(16, 22, 0, 25),
+              child: Text(
+                'Sincronizar dados',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
             ),
