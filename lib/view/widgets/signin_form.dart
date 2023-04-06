@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:ppdm_fatecrp/model/aluno.dart';
 import 'package:ppdm_fatecrp/services_locator.dart';
 import 'package:ppdm_fatecrp/view/widgets/app_text_field.dart';
@@ -6,15 +7,45 @@ import 'package:flutter/material.dart';
 import 'package:ppdm_fatecrp/view/widgets/button_icon.dart';
 
 class SignInSheet extends StatelessWidget {
-  SignInSheet({Key? key, required this.student}) : super(key: key);
+  SignInSheet({Key? key, required this.student, required this.materia}) : super(key: key);
   final Student student;
+  final String materia;
 
   final _cameraService = locator<CameraService>();
+  List studentsPresent = [];
+
+  Future<Map> _getDate() async {
+    var now = new DateTime.now();
+    var formatter = new DateFormat('dd-MM-yyyy');
+    var hour = new DateFormat.Hms().toString();
+    Map dateAndHour = {
+      "data": formatter.format(now).toString(),
+      "hora": hour 
+    };
+
+    return dateAndHour;
+  }
 
   Future _attendance(context, user) async {
     Navigator.pushReplacementNamed(context, 'telaInicial');
   }
 
+  Future<void> _attendanceList({student}) async {
+    Map dateAndHour = await _getDate();
+
+    studentsPresent.add({
+      "materia": materia,
+      "nome_aluno": student.name,
+      "data_chamada": dateAndHour['data'],
+      "hora_chamada": dateAndHour['hora']
+    });
+    
+    for (var i in studentsPresent) {
+      print(i);
+    }
+
+    // print(student['nome']);
+  }
 
   @override
   Widget build(BuildContext context) {

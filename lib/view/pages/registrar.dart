@@ -10,6 +10,8 @@ import 'package:ppdm_fatecrp/services/face_detector_service.dart';
 import 'package:ppdm_fatecrp/view/widgets/signin_form.dart';
 import 'package:ppdm_fatecrp/view/widgets/single_picture.dart';
 
+// import 'package:intl/intl.dart';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +27,7 @@ class RegistrarState extends State<Registrar> {
   final FaceDetectorService _faceDetectorService =
       locator<FaceDetectorService>();
   final MLService _mlService = locator<MLService>();
+
 
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -45,11 +48,9 @@ class RegistrarState extends State<Registrar> {
     super.dispose();
   }
 
-  Future<void> _attendanceList({student}) async {
-    // nome_disciplina
-    
-    print(student);
-  }
+
+
+
 
   Future _start() async {
     setState(() => _isInitializing = true);
@@ -100,13 +101,12 @@ class RegistrarState extends State<Registrar> {
     _start();
   }
 
-  Future<void> onTap() async {
+  Future<void> onTap(String materia) async {
     await takePicture();
     if (_faceDetectorService.faceDetected) {
       Student? student = await _mlService.predict();
-      _attendanceList(student: student);
       var bottomSheetController = scaffoldKey.currentState!
-          .showBottomSheet((context) => signInSheet(student: student));
+          .showBottomSheet((context) => signInSheet(student: student, materia: materia));
       bottomSheetController.closed.whenComplete(_reload);
     }
   }
@@ -126,7 +126,7 @@ class RegistrarState extends State<Registrar> {
     Widget body = getBodyWidget();
     Widget? fab;
 
-    if (!_isPictureTaken) fab = AuthButton(onTap: onTap);
+    if (!_isPictureTaken) fab = AuthButton(onTap: (){onTap(turma['nome_disciplina']);});
 
     return Scaffold(
       key: scaffoldKey,
@@ -138,7 +138,7 @@ class RegistrarState extends State<Registrar> {
     );
   }
 
-  signInSheet({@required Student? student}) => student == null
+  signInSheet({@required Student? student, required String materia}) => student == null
       ? Container(
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.all(20),
@@ -147,5 +147,5 @@ class RegistrarState extends State<Registrar> {
             style: TextStyle(fontSize: 20),
           ),
         )
-      : SignInSheet(student: student);
+      : SignInSheet(student: student, materia: materia,);
 }
