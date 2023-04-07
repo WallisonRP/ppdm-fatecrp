@@ -28,7 +28,6 @@ class RegistrarState extends State<Registrar> {
       locator<FaceDetectorService>();
   final MLService _mlService = locator<MLService>();
 
-
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   bool _isPictureTaken = false;
@@ -48,13 +47,10 @@ class RegistrarState extends State<Registrar> {
     super.dispose();
   }
 
-
-
-
-
   Future _start() async {
     setState(() => _isInitializing = true);
     await _cameraService.initialize();
+    CameraService().clearImagePath();
     await Future.delayed(Duration(milliseconds: 1000));
     setState(() => _isInitializing = false);
     _frameFaces();
@@ -105,8 +101,8 @@ class RegistrarState extends State<Registrar> {
     await takePicture();
     if (_faceDetectorService.faceDetected) {
       Student? student = await _mlService.predict();
-      var bottomSheetController = scaffoldKey.currentState!
-          .showBottomSheet((context) => signInSheet(student: student, materia: materia));
+      var bottomSheetController = scaffoldKey.currentState!.showBottomSheet(
+          (context) => signInSheet(student: student, materia: materia));
       bottomSheetController.closed.whenComplete(_reload);
     }
   }
@@ -126,7 +122,12 @@ class RegistrarState extends State<Registrar> {
     Widget body = getBodyWidget();
     Widget? fab;
 
-    if (!_isPictureTaken) fab = AuthButton(onTap: (){onTap(turma['nome_disciplina']);});
+    if (!_isPictureTaken)
+      fab = AuthButton(
+        onTap: () {
+          onTap(turma['nome_disciplina']);
+        },
+      );
 
     return Scaffold(
       key: scaffoldKey,
@@ -138,14 +139,18 @@ class RegistrarState extends State<Registrar> {
     );
   }
 
-  signInSheet({@required Student? student, required String materia}) => student == null
-      ? Container(
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.all(20),
-          child: Text(
-            'Aluno não encontrado 😞',
-            style: TextStyle(fontSize: 20),
-          ),
-        )
-      : SignInSheet(student: student, materia: materia,);
+  signInSheet({@required Student? student, required String materia}) =>
+      student == null
+          ? Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.all(20),
+              child: Text(
+                'Aluno não encontrado 😞',
+                style: TextStyle(fontSize: 20),
+              ),
+            )
+          : SignInSheet(
+              student: student,
+              materia: materia,
+            );
 }

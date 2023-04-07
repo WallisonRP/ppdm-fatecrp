@@ -68,7 +68,8 @@ class SignInSheet extends StatelessWidget {
                 ButtonIcon(
                   text: 'Continuar chamada',
                   onPressed: () async {
-                    await CameraService().clearImagePath();
+                    // await CameraService().clearImagePath();
+                    
                     Navigator.pop(context);
                   },
                   icon: Icon(
