@@ -105,8 +105,8 @@ class _DisciplinasState extends State<Disciplinas> {
                                         onPressed: () async {
                                           Navigator.pushNamed(
                                               context, 'registrar', arguments: {
-                                            "nome_disciplina": list[index]
-                                                ["nome_disciplina"]
+                                            "materia": list[index]
+                                                ["sigla"]
                                           });
                                         },
                                         child: Text("Confirmar")),

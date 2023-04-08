@@ -50,7 +50,7 @@ class RegistrarState extends State<Registrar> {
   Future _start() async {
     setState(() => _isInitializing = true);
     await _cameraService.initialize();
-    CameraService().clearImagePath();
+    // CameraService().clearImagePath();
     await Future.delayed(Duration(milliseconds: 1000));
     setState(() => _isInitializing = false);
     _frameFaces();
@@ -117,7 +117,7 @@ class RegistrarState extends State<Registrar> {
   @override
   Widget build(BuildContext context) {
     Map turma = ModalRoute.of(context)!.settings.arguments as Map;
-    String nome_disciplina = turma['nome_disciplina'];
+    String materia = 'LIN500';
     Widget header = CameraHeader("Chamada", onBackPressed: _onBackPressed);
     Widget body = getBodyWidget();
     Widget? fab;
@@ -125,7 +125,7 @@ class RegistrarState extends State<Registrar> {
     if (!_isPictureTaken)
       fab = AuthButton(
         onTap: () {
-          onTap(turma['nome_disciplina']);
+          onTap(materia);
         },
       );
 

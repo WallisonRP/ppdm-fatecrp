@@ -13,10 +13,10 @@ class CameraService {
   String? _imagePath;
   String? get imagePath => _imagePath;
 
-  Future<void> clearImagePath() async {
-    _imagePath = ' ';
-    print('Image Path foi limpo com sucesso!');
-  }
+  // Future<void> clearImagePath() async {
+  //   _imagePath = ' ';
+  //   print('Image Path foi limpo com sucesso!');
+  // }
 
   Future<void> initialize() async {
     if (_cameraController != null) return;

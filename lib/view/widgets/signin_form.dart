@@ -6,21 +6,23 @@ import 'package:ppdm_fatecrp/services/camera_service.dart';
 import 'package:flutter/material.dart';
 import 'package:ppdm_fatecrp/view/widgets/button_icon.dart';
 
+import '../../controller/firebase/firestore.dart';
+
 class SignInSheet extends StatelessWidget {
-  SignInSheet({Key? key, required this.student, required this.materia}) : super(key: key);
+  SignInSheet({Key? key, required this.student, required this.materia})
+      : super(key: key);
   final Student student;
   final String materia;
 
   final _cameraService = locator<CameraService>();
-  List studentsPresent = [];
 
   Future<Map> _getDate() async {
     var now = new DateTime.now();
     var formatter = new DateFormat('dd-MM-yyyy');
-    var hour = new DateFormat.Hms().toString();
+    var hour = new DateFormat.Hms();
     Map dateAndHour = {
       "data": formatter.format(now).toString(),
-      "hora": hour 
+      "hora": hour.format(now).toString()
     };
 
     return dateAndHour;
@@ -33,22 +35,21 @@ class SignInSheet extends StatelessWidget {
   Future<void> _attendanceList({student}) async {
     Map dateAndHour = await _getDate();
 
-    studentsPresent.add({
+    Map<String, dynamic> studentPresent = {
       "materia": materia,
-      "nome_aluno": student.name,
       "data_chamada": dateAndHour['data'],
-      "hora_chamada": dateAndHour['hora']
-    });
-    
-    for (var i in studentsPresent) {
-      print(i);
-    }
+      "hora_chamada": dateAndHour['hora'],
+      "ra_aluno": student.id.toString(),
+      "nome_aluno": student.name,
+    };
 
-    // print(student['nome']);
+    await Firestore().saveStudentInAttendanceList(studentPresent);
   }
 
   @override
   Widget build(BuildContext context) {
+    _attendanceList(student: student);
+
     return Container(
       padding: EdgeInsets.all(20),
       child: Column(
@@ -69,7 +70,7 @@ class SignInSheet extends StatelessWidget {
                   text: 'Continuar chamada',
                   onPressed: () async {
                     // await CameraService().clearImagePath();
-                    
+
                     Navigator.pop(context);
                   },
                   icon: Icon(
