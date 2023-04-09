@@ -8,9 +8,9 @@ class Firestore {
     await db
         .collection('alunos')
         .doc('cursos')
-        .collection('ads')
-        .doc(aluno['turma'])
-        .collection('alunos')
+        .collection('fatecADS')
+        // .doc(aluno['turma'])
+        // .collection('alunos')
         .doc(aluno['ra'])
         .set(aluno);
   }

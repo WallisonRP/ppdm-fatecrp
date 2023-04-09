@@ -125,18 +125,23 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                                 SizedBox(
                                   height: 8,
                                 ),
-                                Text('Verifique o enquadramento'),
+                                Text('• Verifique o enquadramento'),
                                 SizedBox(
                                   height: 8,
                                 ),
-                                Text('Alinhe a camera ao seu rosto'),
+                                Text('• Deixe seu rosto bem iluminado'),
                                 SizedBox(
                                   height: 8,
                                 ),
-                                Text('Alinhe a camera ao seu rosto'),
+                                Text('• Evite tremer o celular'),
                               ],
                             ),
-                            actions: [
+                            actions: [TextButton(
+                                  onPressed: (() {
+                                    Navigator.pop(context);
+                                    _cameraService.dispose();
+                                  }),
+                                  child: Text("Cancelar")),
                               ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       padding: EdgeInsets.all(16)),
@@ -147,12 +152,7 @@ class _TelaCadastrarRostoState extends State<TelaCadastrarRosto> {
                                     //     context, 'faceRegister');
                                   },
                                   child: Text("Confirmar")),
-                              TextButton(
-                                  onPressed: (() {
-                                    Navigator.pop(context);
-                                    _cameraService.dispose();
-                                  }),
-                                  child: Text("Cancelar"))
+                              
                             ],
                           );
                         });

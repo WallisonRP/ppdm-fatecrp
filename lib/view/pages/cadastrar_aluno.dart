@@ -38,17 +38,17 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
   ];
 
   List<String> turmas = [
-    // '1º Semestre',
-    // '2º Semestre',
-    // '3º Semestre',
+    '1º Semestre',
+    '2º Semestre',
+    '3º Semestre',
     '4º Semestre',
-    // '5º Semestre',
-    // '6º Semestre',
+    '5º Semestre',
+    '6º Semestre',
   ];
 
   List<String> periodos = [
     'Manhã',
-    // 'Noite',
+    'Noite',
   ];
 
   String? _selectedValue = 'ads';
@@ -141,11 +141,11 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                     }).toList(),
                     onChanged: (dynamic value) {
                       if (value == cursos[0]) {
-                        aluno['curso'] = 'ads';
+                        aluno['curso'] = 'fatecADS';
                       } else if (value == cursos[1]) {
-                        aluno['curso'] = 'gni';
+                        aluno['curso'] = 'fatecGNI';
                       } else if (value == cursos[2]) {
-                        aluno['curso'] = 'sb';
+                        aluno['curso'] = 'fatecSBM';
                       }
 
                       setState(() {
@@ -188,20 +188,20 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                       );
                     }).toList(),
                     onChanged: (dynamic value) {
-                      // if (value == turmas[0]) {
-                      //   aluno['turma'] = '1semestre';
-                      // } else if (value == turmas[1]) {
-                      //   aluno['turma'] = '2semestre';
-                      // } else if (value == turmas[2]) {
-                      //   aluno['turma'] = '3semestre';
-                      // } else if (value == turmas[3]) {
-                      //   aluno['turma'] = '4semestre';
-                      // } else if (value == turmas[4]) {
-                      //   aluno['turma'] = '5semestre';
-                      // } else if (value == turmas[5]) {
-                      //   aluno['turma'] = '6semestre';
-                      // }
-                      aluno['turma'] = '4semestre';
+                      if (value == turmas[0]) {
+                        aluno['turma'] = '1semestre';
+                      } else if (value == turmas[1]) {
+                        aluno['turma'] = '2semestre';
+                      } else if (value == turmas[2]) {
+                        aluno['turma'] = '3semestre';
+                      } else if (value == turmas[3]) {
+                        aluno['turma'] = '4semestre';
+                      } else if (value == turmas[4]) {
+                        aluno['turma'] = '5semestre';
+                      } else if (value == turmas[5]) {
+                        aluno['turma'] = '6semestre';
+                      }
+                      // aluno['turma'] = '4semestre';
                       setState(() {
                         turmaSelecionada = value;
                       });

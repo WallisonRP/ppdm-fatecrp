@@ -67,7 +67,6 @@ class _AuthActionButtonState extends State<AuthActionButton> {
       bool faceDetected = await widget.onPressed();
       if (faceDetected) {
         if (widget.isAttendance) {
-          print('loginnnn');
           var student = await _predictStudent();
           if (student != null) {
             predictedStudent = student;

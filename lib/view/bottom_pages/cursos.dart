@@ -17,7 +17,7 @@ class _TelaCursosState extends State<TelaCursos> {
     'Sistemas Biomédicos'
   ];
 
-  List siglaCursos = ['ads', 'gni', 'sbm'];
+  List siglaCursos = ['fatecADS', 'fatecGNI', 'fatecSBM'];
 
   @override
   Widget build(BuildContext context) {

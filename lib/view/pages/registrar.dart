@@ -37,6 +37,7 @@ class RegistrarState extends State<Registrar> {
   void initState() {
     super.initState();
     _start();
+    _delay();
   }
 
   @override
@@ -45,6 +46,13 @@ class RegistrarState extends State<Registrar> {
     _mlService.dispose();
     _faceDetectorService.dispose();
     super.dispose();
+  }
+
+  Future _delay() async {
+    setState(() => _isInitializing = true);
+    await Future.delayed(Duration(milliseconds: 2000));
+    setState(() => _isInitializing = false);
+
   }
 
   Future _start() async {

@@ -28,9 +28,9 @@ class _TelaAlunosState extends State<TelaAlunos> {
     var listaAlunos = db
         .collection('alunos')
         .doc('cursos')
-        .collection('ads')
-        .doc('4semestre')
-        .collection('alunos')
+        .collection('fatecADS')
+        // .doc('4semestre')
+        // .collection('alunos')
         .snapshots();
     return Scaffold(
       appBar: AppBar(

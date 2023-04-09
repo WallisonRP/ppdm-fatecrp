@@ -102,8 +102,8 @@ class _TelaTurmasState extends State<TelaTurmas> {
                       return Container(
                         child: ListTile(
                           onTap: () {
-                            Navigator.pushNamed(context, 'telaAlunosPorTurmas',
-                                arguments: {"turma": list[index].id});
+                            // Navigator.pushNamed(context, 'telaAlunosPorTurmas',
+                            //     arguments: {"turma": list[index].id});
                           },
                           minVerticalPadding: 30,
                           title: Text(
