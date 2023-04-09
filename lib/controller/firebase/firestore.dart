@@ -54,13 +54,10 @@ class Firestore {
         .collection('aulas')
         .doc(studentToSave['data_chamada'])
         .get();
-    //  var a = await db.collection('collection').document($name).get();
     if (a.exists) {
-      print('Exists');
       return true;
     }
     if (!a.exists) {
-      print('Not exists');
       return false;
     }
   }

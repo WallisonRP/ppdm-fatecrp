@@ -86,6 +86,7 @@ class RegistrarState extends State<Registrar> {
           builder: (context) =>
               AlertDialog(content: Text('Rosto não detectado!')));
     }
+    setState(() {});
   }
 
   _onBackPressed() {
@@ -117,7 +118,7 @@ class RegistrarState extends State<Registrar> {
   @override
   Widget build(BuildContext context) {
     Map turma = ModalRoute.of(context)!.settings.arguments as Map;
-    String materia = 'LIN500';
+    String materia = turma["materia"];
     Widget header = CameraHeader("Chamada", onBackPressed: _onBackPressed);
     Widget body = getBodyWidget();
     Widget? fab;

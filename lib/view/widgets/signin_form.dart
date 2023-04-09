@@ -70,7 +70,7 @@ class SignInSheet extends StatelessWidget {
                   text: 'Continuar chamada',
                   onPressed: () async {
                     // await CameraService().clearImagePath();
-
+                  // Navigator.pushReplacementNamed(context, 'registrar');
                     Navigator.pop(context);
                   },
                   icon: Icon(
