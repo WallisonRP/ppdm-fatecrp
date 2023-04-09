@@ -23,6 +23,7 @@ import 'package:ppdm_fatecrp/view/pages/sobre.dart';
 import 'package:ppdm_fatecrp/view/bottom_pages/turmas.dart';
 import 'package:ppdm_fatecrp/view/pages/turma.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:ppdm_fatecrp/view/pages/turnos.dart';
 import 'check_user.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -59,6 +60,7 @@ void main() async {
       'checkout': (context) => Checkout(),
       'registrar': (context) => Registrar(),
       'disciplinas': (context) => Disciplinas(),
+      'turnos': (context) => Turnos(),
     },
     debugShowCheckedModeBanner: false,
   ));

@@ -9,10 +9,11 @@ import 'package:ppdm_fatecrp/view/widgets/button_icon.dart';
 import '../../controller/firebase/firestore.dart';
 
 class SignInSheet extends StatelessWidget {
-  SignInSheet({Key? key, required this.student, required this.materia})
+  SignInSheet({Key? key, required this.student, required this.materia, required this.turno})
       : super(key: key);
   final Student student;
   final String materia;
+  final String turno;
 
   final _cameraService = locator<CameraService>();
 
@@ -37,6 +38,7 @@ class SignInSheet extends StatelessWidget {
 
     Map<String, dynamic> studentPresent = {
       "materia": materia,
+      "turno": turno,
       "data_chamada": dateAndHour['data'],
       "hora_chamada": dateAndHour['hora'],
       "ra_aluno": student.id.toString(),

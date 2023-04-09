@@ -2,48 +2,36 @@ import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Disciplinas extends StatefulWidget {
-  const Disciplinas({super.key});
+class Turnos extends StatefulWidget {
+  const Turnos({super.key});
 
   @override
-  State<Disciplinas> createState() => _DisciplinasState();
+  State<Turnos> createState() => _TurnosState();
 }
 
-class _DisciplinasState extends State<Disciplinas> {
+class _TurnosState extends State<Turnos> {
   final db = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
-    var listaDisciplinas = db.collection('disciplinas').snapshots();
+    Map turma = ModalRoute.of(context)!.settings.arguments as Map;
+    String materia = turma["materia"];
+    var listaTurnos = db.collection('disciplinas').doc(materia).collection('turno').snapshots();
+
     return Scaffold(
       appBar: AppBar(
           // automaticallyImplyLeading: false,
           iconTheme: IconThemeData(color: Colors.white, opacity: 1),
           title: Text(
             // 'Página inicial',
-            'Selecione a Disciplina',
+            'Selecione o turno',
             style: TextStyle(color: Colors.white),
           )),
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.fromLTRB(16, 10, 0, 10),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                    width: 1.0, color: Color.fromARGB(255, 224, 224, 224)),
-              ),
-            ),
-            child: Row(
-              children: [
-                Text("Ordem alfabética"),
-                Icon(Icons.keyboard_arrow_down)
-              ],
-            ),
-          ),
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
-              stream: listaDisciplinas,
+              stream: listaTurnos,
               builder: ((BuildContext context,
                   AsyncSnapshot<QuerySnapshot> querySnapshot) {
                 if (querySnapshot.hasError) {
@@ -58,14 +46,10 @@ class _DisciplinasState extends State<Disciplinas> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         child: ListTile(
-                            title: Text(list[index]['nome_disciplina']),
+                            title: Text(list[index]['turno']),
                             // subtitle: Text(list[index]['turno']),
                             trailing: Icon(Icons.keyboard_arrow_right),
-                            leading: CircleAvatar(
-                              radius: 22,
-                              backgroundColor: Colors.blue,
-                              child: Text(list[index]['nome_disciplina'][0]),
-                            )),
+                            ),
                         // ListTile(
                         //     title: Text(list[index]['nome']),
                         //     subtitle: Text(list[index]['email']),
@@ -77,12 +61,42 @@ class _DisciplinasState extends State<Disciplinas> {
                         //     )),
                         onTap: () async {
                           // await
-                          // Navigator.pushNamed(context, 'turnos');
-                          Navigator.pushNamed(
-                                              context, 'turnos', arguments: {
-                                            "materia": list[index]
-                                                ["sigla"]
+                          // Navigator.pushNamed(context, 'registrar');
+
+                          showDialog(
+                              context: context,
+                              builder: (_) {
+                                return AlertDialog(
+                                  title: Text('Atenção!'),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                          'Você está entrando no modo de chamada'),
+                                    ],
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text('cancelar')),
+                                    ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            padding: EdgeInsets.all(16)),
+                                        onPressed: () async {
+                                          Navigator.pushNamed(
+                                              context, 'registrar', arguments: {
+                                            "materia": materia,
+                                            "turno": list[index]["turno"].toLowerCase()
                                           });
+                                        },
+                                        child: Text("Confirmar")),
+                                  ],
+                                );
+                              });
                         },
                       );
                     },

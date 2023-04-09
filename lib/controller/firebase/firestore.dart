@@ -22,16 +22,26 @@ class Firestore {
       db
           .collection('listas_de_chamadas')
           .doc(studentToSave['materia'])
+          .collection('turnos')
+          .doc(studentToSave['turno'])
           .collection('aulas')
           .doc(studentToSave['data_chamada'])
           .collection('alunos_presentes')
           .doc(studentToSave["ra_aluno"])
           .set(studentToSave);
     } else {
-      print("Precisa criar");
       db
           .collection('listas_de_chamadas')
           .doc(studentToSave['materia'])
+          .collection('turnos')
+          .doc(studentToSave['turno'])
+          .set({"turno": studentToSave['turno']});
+
+      db
+          .collection('listas_de_chamadas')
+          .doc(studentToSave['materia'])
+          .collection('turnos')
+          .doc(studentToSave['turno'])
           .collection('aulas')
           .doc(studentToSave['data_chamada'])
           .set({"data": studentToSave['data_chamada']});
@@ -39,6 +49,8 @@ class Firestore {
       db
           .collection('listas_de_chamadas')
           .doc(studentToSave['materia'])
+          .collection('turnos')
+          .doc(studentToSave['turno'])
           .collection('aulas')
           .doc(studentToSave['data_chamada'])
           .collection('alunos_presentes')

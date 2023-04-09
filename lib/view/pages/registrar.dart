@@ -98,12 +98,13 @@ class RegistrarState extends State<Registrar> {
     _start();
   }
 
-  Future<void> onTap(String materia) async {
+  Future<void> onTap(String materia, String turno) async {
     await takePicture();
     if (_faceDetectorService.faceDetected) {
       Student? student = await _mlService.predict();
       var bottomSheetController = scaffoldKey.currentState!.showBottomSheet(
-          (context) => signInSheet(student: student, materia: materia));
+          (context) =>
+              signInSheet(student: student, materia: materia, turno: turno));
       bottomSheetController.closed.whenComplete(_reload);
     }
   }
@@ -119,6 +120,7 @@ class RegistrarState extends State<Registrar> {
   Widget build(BuildContext context) {
     Map turma = ModalRoute.of(context)!.settings.arguments as Map;
     String materia = turma["materia"];
+    String turno = turma["turno"];
     Widget header = CameraHeader("Chamada", onBackPressed: _onBackPressed);
     Widget body = getBodyWidget();
     Widget? fab;
@@ -126,7 +128,7 @@ class RegistrarState extends State<Registrar> {
     if (!_isPictureTaken)
       fab = AuthButton(
         onTap: () {
-          onTap(materia);
+          onTap(materia, turno);
         },
       );
 
@@ -140,7 +142,10 @@ class RegistrarState extends State<Registrar> {
     );
   }
 
-  signInSheet({@required Student? student, required String materia}) =>
+  signInSheet(
+          {@required Student? student,
+          required String materia,
+          required String turno}) =>
       student == null
           ? Container(
               width: MediaQuery.of(context).size.width,
@@ -150,8 +155,5 @@ class RegistrarState extends State<Registrar> {
                 style: TextStyle(fontSize: 20),
               ),
             )
-          : SignInSheet(
-              student: student,
-              materia: materia,
-            );
+          : SignInSheet(student: student, materia: materia, turno: turno);
 }
