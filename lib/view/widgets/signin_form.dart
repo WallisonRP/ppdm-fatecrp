@@ -9,7 +9,11 @@ import 'package:ppdm_fatecrp/view/widgets/button_icon.dart';
 import '../../controller/firebase/firestore.dart';
 
 class SignInSheet extends StatelessWidget {
-  SignInSheet({Key? key, required this.student, required this.materia, required this.turno})
+  SignInSheet(
+      {Key? key,
+      required this.student,
+      required this.materia,
+      required this.turno})
       : super(key: key);
   final Student student;
   final String materia;
@@ -51,6 +55,8 @@ class SignInSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _attendanceList(student: student);
+    String fullName = student.name;
+    String firstName = fullName.split(' ')[0];
 
     return Container(
       padding: EdgeInsets.all(20),
@@ -60,7 +66,7 @@ class SignInSheet extends StatelessWidget {
         children: [
           Container(
             child: Text(
-              '${student.name} presença registrada',
+              '${firstName} presença registrada',
               style: TextStyle(fontSize: 20),
             ),
           ),
@@ -72,7 +78,7 @@ class SignInSheet extends StatelessWidget {
                   text: 'Continuar chamada',
                   onPressed: () async {
                     // await CameraService().clearImagePath();
-                  // Navigator.pushReplacementNamed(context, 'registrar');
+                    // Navigator.pushReplacementNamed(context, 'registrar');
                     Navigator.pop(context);
                   },
                   icon: Icon(

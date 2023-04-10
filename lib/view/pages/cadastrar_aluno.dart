@@ -296,7 +296,8 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
       required TextEditingController controller,
       required String variavel,
       required TextInputType teclado}) {
-    return TextField(
+    return TextFormField(
+      // validator: validator,
       keyboardType: teclado,
       controller: controller,
       onChanged: (value) {

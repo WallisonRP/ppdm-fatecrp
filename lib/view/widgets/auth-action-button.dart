@@ -145,7 +145,7 @@ class _AuthActionButtonState extends State<AuthActionButton> {
             child: Column(
               children: [
                 !widget.isAttendance
-                    ? Text("Roto capturado com sucesso!!")
+                    ? Text("Rosto capturado com sucesso!!")
                     : Container(),
                 SizedBox(height: 10),
                 widget.isAttendance && predictedStudent != null

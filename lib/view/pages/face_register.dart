@@ -72,6 +72,14 @@ class _FaceRegisterState extends State<FaceRegister> {
     _frameFaces();
   }
 
+    Future _delay(int tempo) async {
+    setState(() => _initializing = true);
+    await Future.delayed(Duration(milliseconds: tempo));
+    setState(() => _initializing = false);
+  }
+
+  
+
   Future<bool> onShot() async {
     if (faceDetected == null) {
       showDialog(
@@ -155,6 +163,7 @@ class _FaceRegisterState extends State<FaceRegister> {
     // TODO: implement initState
     super.initState();
     _start();
+    _delay(2000);
   }
 
   @override
