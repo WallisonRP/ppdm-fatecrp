@@ -12,15 +12,14 @@ class SinglePicture extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     final double mirror = math.pi;
     return Container(
+      color: Colors.white,
       width: width,
       height: height,
-      child: Transform(
-          alignment: Alignment.center,
-          child: FittedBox(
-            fit: BoxFit.cover,
-            child: Image.file(File(imagePath)),
-          ),
-          transform: Matrix4.rotationY(mirror)),
+      child: Icon(
+                Icons.check_circle,
+                size: 160,
+                color: Colors.green,
+              ),
     );
   }
 }

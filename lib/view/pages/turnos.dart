@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ppdm_fatecrp/view/pages/registrar.dart';
 
 class Turnos extends StatefulWidget {
   const Turnos({super.key});
@@ -87,11 +88,12 @@ class _TurnosState extends State<Turnos> {
                                         style: ElevatedButton.styleFrom(
                                             padding: EdgeInsets.all(16)),
                                         onPressed: () async {
-                                          Navigator.pushNamed(
-                                              context, 'registrar', arguments: {
-                                            "materia": materia,
-                                            "turno": list[index]["turno"].toLowerCase()
-                                          });
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Registrar(materia: materia, turno: list[index]["turno"].toLowerCase(),)));
+                                          // Navigator.pushNamed(
+                                          //     context, 'registrar', arguments: {
+                                          //   "materia": materia,
+                                          //   "turno": list[index]["turno"].toLowerCase()
+                                          // });
                                         },
                                         child: Text("Confirmar")),
                                   ],

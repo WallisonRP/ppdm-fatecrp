@@ -22,9 +22,7 @@ class _CheckUserLoginState extends State<CheckUserLogin> {
   CollectionReference _collectionRef = FirebaseFirestore.instance
       .collection("alunos")
       .doc('cursos')
-      .collection('ads')
-      .doc('4semestre')
-      .collection('alunos');
+      .collection('fatecADS');
   var student;
   List allStudents = [];
 

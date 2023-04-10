@@ -58,7 +58,7 @@ void main() async {
       // 'telaTurma': (context) => TelaTurmas(),
       'faceRegister': (context) => FaceRegister(),
       'checkout': (context) => Checkout(),
-      'registrar': (context) => Registrar(),
+      // 'registrar': (context) => Registrar(),
       'disciplinas': (context) => Disciplinas(),
       'turnos': (context) => Turnos(),
     },

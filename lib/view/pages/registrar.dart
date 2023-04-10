@@ -16,13 +16,19 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class Registrar extends StatefulWidget {
-  const Registrar({Key? key}) : super(key: key);
+  final String materia;
+  final String turno;
+  const Registrar({Key? key, required this.materia, required this.turno}) : super(key: key);
+  // String turno;
 
   @override
   RegistrarState createState() => RegistrarState();
 }
 
 class RegistrarState extends State<Registrar> {
+  // String? materia;
+  // String? turno;
+  
   final CameraService _cameraService = locator<CameraService>();
   final FaceDetectorService _faceDetectorService =
       locator<FaceDetectorService>();
@@ -37,7 +43,7 @@ class RegistrarState extends State<Registrar> {
   void initState() {
     super.initState();
     _start();
-    _delay();
+    _delay(2000);
   }
 
   @override
@@ -48,11 +54,10 @@ class RegistrarState extends State<Registrar> {
     super.dispose();
   }
 
-  Future _delay() async {
+  Future _delay(int tempo) async {
     setState(() => _isInitializing = true);
-    await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: tempo));
     setState(() => _isInitializing = false);
-
   }
 
   Future _start() async {
@@ -80,6 +85,7 @@ class RegistrarState extends State<Registrar> {
     await _faceDetectorService.detectFacesFromImage(image!);
     if (_faceDetectorService.faceDetected) {
       _mlService.setCurrentPrediction(image, _faceDetectorService.faces[0]);
+      testzinn(widget.materia, widget.turno);
     }
     if (mounted) setState(() {});
   }
@@ -106,15 +112,35 @@ class RegistrarState extends State<Registrar> {
     _start();
   }
 
-  Future<void> onTap(String materia, String turno) async {
+  Future<void> testzinn(String materia, String turno) async {
+    Student? student = await _mlService.predict();
+
+    if(student == null) {
+      print("Estudante é nulo");
+
+    } else {
+      print(materia);
+      print(turno);
     await takePicture();
-    if (_faceDetectorService.faceDetected) {
-      Student? student = await _mlService.predict();
-      var bottomSheetController = scaffoldKey.currentState!.showBottomSheet(
+        _delay(1000);
+    var bottomSheetController = scaffoldKey.currentState!.showBottomSheet(
           (context) =>
               signInSheet(student: student, materia: materia, turno: turno));
       bottomSheetController.closed.whenComplete(_reload);
+      // print(student.name);
     }
+    
+  }
+
+  Future<void> onTap(String materia, String turno) async {
+    // await takePicture();
+    // if (_faceDetectorService.faceDetected) {
+    //   Student? student = await _mlService.predict();
+    //   var bottomSheetController = scaffoldKey.currentState!.showBottomSheet(
+    //       (context) =>
+    //           signInSheet(student: student, materia: materia, turno: turno));
+    //   bottomSheetController.closed.whenComplete(_reload);
+    // }
   }
 
   Widget getBodyWidget() {
@@ -126,9 +152,6 @@ class RegistrarState extends State<Registrar> {
 
   @override
   Widget build(BuildContext context) {
-    Map turma = ModalRoute.of(context)!.settings.arguments as Map;
-    String materia = turma["materia"];
-    String turno = turma["turno"];
     Widget header = CameraHeader("Chamada", onBackPressed: _onBackPressed);
     Widget body = getBodyWidget();
     Widget? fab;
@@ -136,7 +159,7 @@ class RegistrarState extends State<Registrar> {
     if (!_isPictureTaken)
       fab = AuthButton(
         onTap: () {
-          onTap(materia, turno);
+          // onTap(materia, turno);
         },
       );
 
@@ -145,8 +168,8 @@ class RegistrarState extends State<Registrar> {
       body: Stack(
         children: [body, header],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: fab,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: fab,
     );
   }
 
