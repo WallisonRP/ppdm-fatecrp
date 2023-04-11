@@ -5,6 +5,7 @@ import 'package:ppdm_fatecrp/controller/db/db_controller.dart';
 
 import '../widgets/caixa_de_texto_redonda.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:intl/intl.dart';
 
 class TelaCadastrarAluno extends StatefulWidget {
   const TelaCadastrarAluno({super.key});
@@ -125,6 +126,7 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                             label: 'Nome Completo',
                             controller: _nomeCompleto,
                             variavel: 'nome',
+                            cap: TextCapitalization.words,
                             teclado: TextInputType.name,
                             validator: (String? value) {
                               if (value == null || value.isEmpty) {
@@ -132,16 +134,69 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                               }
                             }),
                         SizedBox(height: 16),
-                        TextFieldCadastro(
-                            label: 'Data de Nascimento',
-                            controller: _dataNascimento,
-                            variavel: 'dataNascimento',
-                            teclado: TextInputType.datetime,
-                            validator: (String? value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Campo obrigatório';
-                              }
-                            }),
+                        TextFormField(
+                          controller: _dataNascimento,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.black)),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.redAccent),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black),
+                            ),
+                            labelStyle: TextStyle(color: Colors.black),
+                            labelText: 'Data de Nascimento',
+                          ),
+                          validator: (String? value) {
+                            if(value == null || value.isEmpty) {
+                              return 'Campo obrigatório';
+                            }
+                          },
+                          onChanged: (value) {
+                          aluno['dataNascimento'] = value;
+
+                          },
+                          readOnly: true,
+                                          onTap: () async {
+                  DateTime? pickedDate = await showDatePicker(
+                    locale: Locale('pt'),
+                      context: context, initialDate: DateTime.now(),
+                      firstDate: DateTime(1920), //DateTime.now() - not to allow to choose before today.
+                      lastDate: DateTime(2024)
+                  );
+                  
+                  if(pickedDate != null ){
+                      print(pickedDate);  //pickedDate output format => 2021-03-10 00:00:00.000
+                      String formattedDate = DateFormat('dd/MM/yyyy').format(pickedDate); 
+                      print(formattedDate); //formatted date output using intl package =>  2021-03-16
+                        //you can implement different kind of Date Format here according to your requirement
+
+                      setState(() {
+                         _dataNascimento.text = formattedDate; //set output date to TextField value. 
+                      });
+                  }else{
+                      print("Date is not selected");
+                  }
+                },
+                        ),
+                        // TextFieldCadastro(
+                        //     label: 'Data de Nascimento',
+                        //     controller: _dataNascimento,
+                        //     variavel: 'dataNascimento',
+                        //     teclado: TextInputType.datetime,
+                        //     validator: (String? value) {
+                        //       if (value == null || value.isEmpty) {
+                        //         return 'Campo obrigatório';
+                        //       }
+                        //     }),
                         SizedBox(height: 16),
                         TextFieldCadastro(
                             label: 'E-mail',
@@ -151,6 +206,8 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                             validator: emailValidator),
                         SizedBox(height: 16),
                         TextFormField(
+                          keyboardType: TextInputType.number,
+                          controller: _ra,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -372,12 +429,15 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                     ),
                     ElevatedButton(
                       onPressed: () async {
-                        formKey.currentState?.validate();
-                        raKey.currentState?.validate();
-                        // _checkRA(aluno['ra']);
+                        var formCheck = formKey.currentState?.validate();
+                        var raCheck = raKey.currentState?.validate();
 
+                        if(formCheck == true && raCheck == true) {
                         Navigator.pushNamed(context, 'cadastrarRosto',
                             arguments: aluno);
+                        }
+
+                        // _checkRA(aluno['ra']);
                       },
                       child: Text(
                         'Proximo',
@@ -400,8 +460,10 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
       required TextEditingController controller,
       required String variavel,
       required TextInputType teclado,
-      required validator}) {
+      required validator,
+      cap}) {
     return TextFormField(
+      textCapitalization: cap ?? TextCapitalization.none,
       validator: validator,
       keyboardType: teclado,
       controller: controller,
@@ -428,4 +490,6 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
       ),
     );
   }
+
+  
 }

@@ -98,6 +98,7 @@ class _FaceRegisterState extends State<FaceRegister> {
       // await _cameraService.cameraController?.stopImageStream();
       await Future.delayed(Duration(milliseconds: 200));
       XFile? file = await _cameraService.takePicture();
+      await Future.delayed(Duration(milliseconds: 200));
       imagePath = file?.path;
 
       setState(() {

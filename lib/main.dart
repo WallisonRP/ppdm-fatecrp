@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:path/path.dart';
 import 'package:ppdm_fatecrp/services_locator.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -34,12 +35,21 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );  
+  );
 
   setupServices();
   runApp(MaterialApp(
     // home: TelaSobre(),
     initialRoute: 'checkUser',
+    localizationsDelegates: [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
+    supportedLocales: [
+      Locale('en'),
+      Locale('pt'),
+    ],
     routes: {
       'checkUser': (context) => CheckUserLogin(),
       'login': (context) => TelaDeLogin(),
