@@ -159,6 +159,14 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                               borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(color: Colors.black),
                             ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.redAccent),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black),
+                            ),
                             labelStyle: TextStyle(color: Colors.black),
                             labelText: 'RA',
                           ),
@@ -177,6 +185,8 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                           },
                           onChanged: (value) {
                             _checkRA(value);
+                          aluno['ra'] = value;
+
                           },
                         )
                         // TextFieldCadastro(
@@ -366,8 +376,8 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                         raKey.currentState?.validate();
                         // _checkRA(aluno['ra']);
 
-                        // Navigator.pushNamed(context, 'cadastrarRosto',
-                        //     arguments: aluno);
+                        Navigator.pushNamed(context, 'cadastrarRosto',
+                            arguments: aluno);
                       },
                       child: Text(
                         'Proximo',
@@ -406,6 +416,13 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(color: Colors.black),
         ),
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: BorderSide(color: Colors.redAccent)),
+        focusedErrorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black),
+                            ),
         labelStyle: TextStyle(color: Colors.black),
         labelText: label,
       ),
