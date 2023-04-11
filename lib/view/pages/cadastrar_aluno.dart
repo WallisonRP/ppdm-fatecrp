@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_string_interpolations, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:ppdm_fatecrp/controller/db/db_controller.dart';
 
 import '../widgets/caixa_de_texto_redonda.dart';
+import 'package:form_validator/form_validator.dart';
 
 class TelaCadastrarAluno extends StatefulWidget {
   const TelaCadastrarAluno({super.key});
@@ -20,6 +22,9 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
   TextEditingController _curso = TextEditingController();
   TextEditingController _turma = TextEditingController();
   TextEditingController _periodo = TextEditingController();
+
+  final emailValidator =
+      ValidationBuilder(localeName: 'pt-br').email().maxLength(50).build();
 
   Map<String, dynamic> aluno = {
     "nome": "",
@@ -60,6 +65,35 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
   String? turmaSelecionada;
   String? periodoSelecionado;
 
+  final formKey = GlobalKey<FormState>();
+  final raKey = GlobalKey<FormFieldState>();
+  var testeform;
+
+  _checkRA(String ra) async {
+    DatabaseHelper _dbHelper = DatabaseHelper.instance;
+
+    var studentChecker = await _dbHelper.queryStudentByID(int.parse(ra));
+    if (studentChecker == 1) {
+      testeform = studentChecker;
+    } else if (studentChecker == 0) {
+      testeform = studentChecker;
+    }
+
+    return studentChecker;
+  }
+
+  // String? _teste(String? value) {
+  //   int studentChecker = _checkRA(value!);
+
+  //   if (value == null || value.isEmpty) {
+  //     return 'Campo obrigatório';
+  //   }
+  //   print('aaaaaaaaaaaaaaaaaaaaaaa $studentChecker');
+  //   if (studentChecker == 1) {
+  //     return 'RA já existente';
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,29 +117,85 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                     style: TextStyle(fontSize: 26, fontWeight: FontWeight.w600),
                   ),
                 ),
-                TextFieldCadastro(
-                    label: 'Nome Completo',
-                    controller: _nomeCompleto,
-                    variavel: 'nome',
-                    teclado: TextInputType.name),
-                SizedBox(height: 16),
-                TextFieldCadastro(
-                    label: 'Data de Nascimento',
-                    controller: _dataNascimento,
-                    variavel: 'dataNascimento',
-                    teclado: TextInputType.datetime),
-                SizedBox(height: 16),
-                TextFieldCadastro(
-                    label: 'E-mail',
-                    controller: _email,
-                    variavel: 'email',
-                    teclado: TextInputType.emailAddress),
-                SizedBox(height: 16),
-                TextFieldCadastro(
-                    label: 'RA',
-                    controller: _ra,
-                    variavel: 'ra',
-                    teclado: TextInputType.number),
+                Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        TextFieldCadastro(
+                            label: 'Nome Completo',
+                            controller: _nomeCompleto,
+                            variavel: 'nome',
+                            teclado: TextInputType.name,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Campo obrigatório';
+                              }
+                            }),
+                        SizedBox(height: 16),
+                        TextFieldCadastro(
+                            label: 'Data de Nascimento',
+                            controller: _dataNascimento,
+                            variavel: 'dataNascimento',
+                            teclado: TextInputType.datetime,
+                            validator: (String? value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Campo obrigatório';
+                              }
+                            }),
+                        SizedBox(height: 16),
+                        TextFieldCadastro(
+                            label: 'E-mail',
+                            controller: _email,
+                            variavel: 'email',
+                            teclado: TextInputType.emailAddress,
+                            validator: emailValidator),
+                        SizedBox(height: 16),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(color: Colors.black)),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(color: Colors.black),
+                            ),
+                            labelStyle: TextStyle(color: Colors.black),
+                            labelText: 'RA',
+                          ),
+                          key: raKey,
+                          validator: (String? value) {
+                            _checkRA(value!);
+                            var _studentChecker = testeform;
+
+                            if(value == null || value.isEmpty) {
+                              return 'Campo obrigatório';
+                            }
+
+                            if (_studentChecker == 1) {
+                              return 'RA já existente';
+                            }
+                          },
+                          onChanged: (value) {
+                            _checkRA(value);
+                          },
+                        )
+                        // TextFieldCadastro(
+                        //     label: 'RA',
+                        //     controller: _ra,
+                        //     variavel: 'ra',
+                        //     teclado: TextInputType.number,
+                        //     validator: (String? value) {
+                        //       var studentChecker = _checkRA(value!);
+
+                        //       if (value == null || value.isEmpty) {
+                        //         return 'Campo obrigatório';
+                        //       }
+                        //       if (studentChecker == 1) {
+                        //         return 'RA já existente';
+                        //       }
+                        //     }),
+                      ],
+                    )),
                 SizedBox(height: 16),
                 Container(
                   padding: EdgeInsets.only(left: 12, right: 6),
@@ -271,9 +361,13 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'cadastrarRosto',
-                            arguments: aluno);
+                      onPressed: () async {
+                        formKey.currentState?.validate();
+                        raKey.currentState?.validate();
+                        // _checkRA(aluno['ra']);
+
+                        // Navigator.pushNamed(context, 'cadastrarRosto',
+                        //     arguments: aluno);
                       },
                       child: Text(
                         'Proximo',
@@ -295,9 +389,10 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
       {required String label,
       required TextEditingController controller,
       required String variavel,
-      required TextInputType teclado}) {
+      required TextInputType teclado,
+      required validator}) {
     return TextFormField(
-      // validator: validator,
+      validator: validator,
       keyboardType: teclado,
       controller: controller,
       onChanged: (value) {
