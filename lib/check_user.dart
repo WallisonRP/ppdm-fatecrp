@@ -46,13 +46,13 @@ class _CheckUserLoginState extends State<CheckUserLogin> {
   Future<void> saveStudentsInLocalDatabase(student) async {
     DatabaseHelper _dbHelper = DatabaseHelper.instance;
     var studentChecker =
-        await _dbHelper.queryStudentByID(int.parse(student['ra']));
+        await _dbHelper.queryStudentByID(student['ra']);
 
     if (studentChecker == 1) {
       print('O estudante já está cadastrado!');
     } else {
       _dbHelper.insert(Student(
-        id: int.parse(student['ra']),
+        id: student['ra'],
         name: student['nome'],
         modelData: student['model_data'],
       ));

@@ -73,7 +73,7 @@ class _TelaCadastrarAlunoState extends State<TelaCadastrarAluno> {
   _checkRA(String ra) async {
     DatabaseHelper _dbHelper = DatabaseHelper.instance;
 
-    var studentChecker = await _dbHelper.queryStudentByID(int.parse(ra));
+    var studentChecker = await _dbHelper.queryStudentByID(ra);
     if (studentChecker == 1) {
       testeform = studentChecker;
     } else if (studentChecker == 0) {

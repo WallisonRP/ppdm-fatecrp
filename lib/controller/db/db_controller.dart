@@ -37,7 +37,7 @@ class DatabaseHelper {
   Future _onCreate(Database db, int version) async {
     await db.execute('''
           CREATE TABLE $table (
-            $columnId INTEGER PRIMARY KEY,
+            $columnId TEXT PRIMARY KEY,
             $columnUser TEXT NOT NULL,
             $columnModelData TEXT NOT NULL
           )
@@ -50,14 +50,14 @@ class DatabaseHelper {
     return await db.insert(table, student.toMap());
   }
 
-  Future<int> queryStudentByID(int id) async {
+  Future<int> queryStudentByID(String id) async {
     Database db = await instance.database;
     List<String> columnsToSelect = [
       DatabaseHelper.columnId,
       DatabaseHelper.columnUser,
       DatabaseHelper.columnModelData,
     ];
-    int rowId = id;
+    String rowId = id;
     String whereString = '${DatabaseHelper.columnId} = ?';
     List<dynamic> whereArguments = [rowId];
     List<Map> result = await db.query(DatabaseHelper.table,

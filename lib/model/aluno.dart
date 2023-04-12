@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class Student {
   String name;
-  int id;
+  String id;
   List modelData;
 
   Student({
